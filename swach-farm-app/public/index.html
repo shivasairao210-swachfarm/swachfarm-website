@@ -6,6 +6,12 @@
 <title>Swach Farm | Fresh Pure Milk Delivered to Your Doorstep - Karimnagar</title>
 <meta name="description" content="Swach Farm delivers fresh, pure milk, cheese and butter from our natural farm in Revelly village, Karimnagar district, Telangana - straight to your doorstep. No preservatives, no chemicals, just health for every family." />
 <link rel="icon" type="image/png" href="assets/logo.png" />
+<link rel="manifest" href="manifest.webmanifest" />
+<meta name="theme-color" content="#0f2e20" />
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="Swach Farm" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -2698,6 +2704,16 @@
   }
 
 })();
+</script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('/sw.js').catch(function () {
+        /* offline support is a nice-to-have, not required */
+      });
+    });
+  }
 </script>
 
 </body>
