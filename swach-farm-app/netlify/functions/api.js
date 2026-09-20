@@ -36,6 +36,9 @@ const MONGO_URI = process.env.MONGO_URI || '';
 const JWT_SECRET = process.env.JWT_SECRET || 'swach-farm-dev-secret-change-me-in-production';
 const JWT_EXPIRES_IN = '2h';
 const SALT_ROUNDS = 10;
+const BREVO_API_KEY = process.env.BREVO_API_KEY || '';
+const NOTIFY_EMAIL = process.env.NOTIFY_EMAIL || '';
+const NOTIFY_SENDER_EMAIL = process.env.NOTIFY_SENDER_EMAIL || NOTIFY_EMAIL;
 
 if (!process.env.JWT_SECRET) {
   // eslint-disable-next-line no-console
@@ -141,6 +144,67 @@ const inquirySchema = new mongoose.Schema(
 );
 
 const Inquiry = mongoose.models.Inquiry || mongoose.model('Inquiry', inquirySchema);
+
+// -------------------------------------------------------------------------
+// Email notifications (Brevo)
+// -------------------------------------------------------------------------
+// Best-effort: a failure here must never block or fail an inquiry submission,
+// since the inquiry is already safely saved to MongoDB by that point.
+
+const INQUIRY_TYPE_LABELS = {
+  contact: 'Contact Form Inquiry',
+  shop: 'Guest Farm Shop Order',
+  tour: 'Guest Farm Tour Booking',
+};
+
+async function sendInquiryNotificationEmail(inquiry) {
+  if (!BREVO_API_KEY || !NOTIFY_EMAIL) {
+    // eslint-disable-next-line no-console
+    console.warn('[swach-farm-api] Skipping email notification: BREVO_API_KEY or NOTIFY_EMAIL not configured.');
+    return;
+  }
+
+  const rows = [
+    ['Type', INQUIRY_TYPE_LABELS[inquiry.type] || inquiry.type],
+    ['Name', inquiry.name],
+    ['Phone', inquiry.phone],
+    inquiry.email ? ['Email', inquiry.email] : null,
+    inquiry.address ? ['Address', inquiry.address] : null,
+    inquiry.service ? ['Service', inquiry.service] : null,
+    inquiry.description ? ['Details', inquiry.description] : null,
+    inquiry.message ? ['Message', inquiry.message] : null,
+  ].filter(Boolean);
+
+  const htmlRows = rows
+    .map(([label, value]) => `<tr><td style="padding:4px 12px 4px 0;color:#555;"><strong>${label}</strong></td><td style="padding:4px 0;">${value}</td></tr>`)
+    .join('');
+
+  try {
+    const response = await fetch('https://api.brevo.com/v3/smtp/email', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        'api-key': BREVO_API_KEY,
+      },
+      body: JSON.stringify({
+        sender: { name: 'Swach Farm Website', email: NOTIFY_SENDER_EMAIL },
+        to: [{ email: NOTIFY_EMAIL }],
+        subject: `New ${INQUIRY_TYPE_LABELS[inquiry.type] || inquiry.type} from ${inquiry.name}`,
+        htmlContent: `<table cellpadding="0" cellspacing="0">${htmlRows}</table>`,
+      }),
+    });
+
+    if (!response.ok) {
+      const body = await response.text();
+      // eslint-disable-next-line no-console
+      console.error('[swach-farm-api] Brevo email send failed:', response.status, body);
+    }
+  } catch (err) {
+    // eslint-disable-next-line no-console
+    console.error('[swach-farm-api] Brevo email send error:', err.message);
+  }
+}
 
 // -------------------------------------------------------------------------
 // Express app setup
@@ -250,7 +314,7 @@ app.post('/api/inquiries', async (req, res) => {
       return res.status(400).json({ success: false, message: 'Phone number is required.' });
     }
 
-    await Inquiry.create({
+    const inquiry = await Inquiry.create({
       type,
       name: name.trim(),
       phone: phone.trim(),
@@ -260,6 +324,8 @@ app.post('/api/inquiries', async (req, res) => {
       message: message ? message.trim() : undefined,
       description: description ? description.trim() : undefined,
     });
+
+    await sendInquiryNotificationEmail(inquiry);
 
     return res.status(201).json({
       success: true,
@@ -499,6 +565,14 @@ app.post('/api/action', verifyToken, async (req, res) => {
     user.activityLog.push(logEntry);
 
     await user.save();
+
+    await sendInquiryNotificationEmail({
+      type,
+      name: user.name,
+      phone: 'N/A (logged-in account, no phone on file)',
+      email: user.email,
+      description,
+    });
 
     return res.status(200).json({
       success: true,
