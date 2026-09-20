@@ -1012,6 +1012,39 @@
     color: var(--text-dark);
   }
   .history-empty { text-align: center; padding: 40px 10px; color: var(--text-muted); font-size: 0.9rem; }
+  .dash-orders-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    padding: 30px;
+    margin-bottom: 24px;
+  }
+  .dash-orders-card h3 { font-size: 1.2rem; margin-bottom: 4px; }
+  .dash-orders-card > p.sub { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 20px; }
+  .order-list { display: flex; flex-direction: column; gap: 12px; max-height: 440px; overflow-y: auto; }
+  .order-item {
+    background: var(--cream);
+    border-left: 3px solid var(--forest);
+    border-radius: var(--radius-sm);
+    padding: 13px 16px;
+    font-size: 0.86rem;
+    color: var(--text-dark);
+  }
+  .order-item-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 6px; }
+  .order-type-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+  .order-type-badge.shop { background: var(--forest-pale); color: var(--forest-dark); }
+  .order-type-badge.tour { background: #fff1cc; color: var(--gold-dark); }
+  .order-item-date { color: var(--text-muted); font-size: 0.78rem; white-space: nowrap; }
+  .order-item-desc { margin-bottom: 4px; }
+  .order-item-points { color: var(--gold-dark); font-size: 0.78rem; font-weight: 600; }
   .dash-loading { text-align: center; padding: 60px 10px; color: var(--text-muted); }
   .dash-guest-notice {
     background: #fff6e6;
@@ -2434,7 +2467,19 @@
       var data = await res.json();
 
       if (res.ok && data.success) {
-        renderDashboard(data.user);
+        var orders = [];
+        try {
+          var ordersRes = await fetch(API_BASE + '/orders', {
+            method: 'GET',
+            headers: { 'Authorization': 'Bearer ' + state.token }
+          });
+          var ordersData = await ordersRes.json();
+          if (ordersRes.ok && ordersData.success) {
+            orders = ordersData.orders;
+          }
+        } catch (ordersErr) { /* orders are best-effort; dashboard still renders without them */ }
+
+        renderDashboard(data.user, orders);
       } else if (res.status === 401) {
         logout();
         showToast('Your session has expired. Please sign in again.', 'warn');
@@ -2468,7 +2513,15 @@
       '</div>';
   }
 
-  function renderDashboard(user) {
+  var ORDER_TYPE_LABELS = { shop: 'Shop Order', tour: 'Farm Tour' };
+
+  function formatOrderDate(dateStr) {
+    var d = new Date(dateStr);
+    if (isNaN(d.getTime())) return '';
+    return d.toLocaleString('en-IN', { dateStyle: 'medium', timeStyle: 'short' });
+  }
+
+  function renderDashboard(user, orders) {
     var container = document.getElementById('dashboardContainer');
     var points = user.points || 0;
     var pct = Math.max(4, Math.min(100, points % 100 === 0 && points > 0 ? 100 : points % 100));
@@ -2483,6 +2536,24 @@
       historyHtml = '<div class="history-empty">No activity yet. Place a shop order or book a farm tour to get started!</div>';
     }
 
+    var ordersHtml = '';
+    if (orders && orders.length > 0) {
+      ordersHtml = orders.map(function (order) {
+        var typeLabel = ORDER_TYPE_LABELS[order.type] || order.type;
+        return '' +
+          '<div class="order-item">' +
+            '<div class="order-item-top">' +
+              '<span class="order-type-badge ' + escapeHtml(order.type) + '">' + escapeHtml(typeLabel) + '</span>' +
+              '<span class="order-item-date">' + escapeHtml(formatOrderDate(order.createdAt)) + '</span>' +
+            '</div>' +
+            '<div class="order-item-desc">' + escapeHtml(order.description || typeLabel) + '</div>' +
+            '<div class="order-item-points">+' + (order.pointsEarned || 0) + ' loyalty points</div>' +
+          '</div>';
+      }).join('');
+    } else {
+      ordersHtml = '<div class="history-empty">No orders yet. Place a shop order or book a farm tour to see it here!</div>';
+    }
+
     container.innerHTML =
       '<div class="dashboard-wrapper">' +
         '<div class="dash-profile-card">' +
@@ -2494,10 +2565,17 @@
           '<div class="dash-points-hint">Earn +15 points per shop order and +10 points per farm tour booked.</div>' +
           '<button class="btn btn-danger-outline dash-logout-btn" onclick="logout()">Log Out</button>' +
         '</div>' +
-        '<div class="dash-history-card">' +
-          '<h3>Activity History</h3>' +
-          '<p class="sub">A chronological record of your Swach Farm orders and bookings.</p>' +
-          '<div class="history-list">' + historyHtml + '</div>' +
+        '<div>' +
+          '<div class="dash-orders-card">' +
+            '<h3>My Orders</h3>' +
+            '<p class="sub">Every farm shop order and tour booking you\'ve placed.</p>' +
+            '<div class="order-list">' + ordersHtml + '</div>' +
+          '</div>' +
+          '<div class="dash-history-card">' +
+            '<h3>Activity History</h3>' +
+            '<p class="sub">A chronological record of your Swach Farm orders and bookings.</p>' +
+            '<div class="history-list">' + historyHtml + '</div>' +
+          '</div>' +
         '</div>' +
       '</div>';
   }

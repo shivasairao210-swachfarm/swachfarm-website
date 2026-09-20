@@ -149,6 +149,32 @@ const inquirySchema = new mongoose.Schema(
 
 const Inquiry = mongoose.models.Inquiry || mongoose.model('Inquiry', inquirySchema);
 
+const orderSchema = new mongoose.Schema(
+  {
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      required: true,
+      index: true,
+    },
+    type: {
+      type: String,
+      required: true,
+      enum: ['shop', 'tour'],
+    },
+    description: { type: String, trim: true },
+    pointsEarned: { type: Number, default: 0 },
+    status: {
+      type: String,
+      enum: ['placed', 'confirmed', 'completed', 'cancelled'],
+      default: 'placed',
+    },
+  },
+  { timestamps: true }
+);
+
+const Order = mongoose.models.Order || mongoose.model('Order', orderSchema);
+
 // -------------------------------------------------------------------------
 // Email notifications (Brevo)
 // -------------------------------------------------------------------------
@@ -526,6 +552,36 @@ app.get('/api/dashboard/data', verifyToken, async (req, res) => {
 });
 
 // -------------------------------------------------------------------------
+// Orders route (protected) - a logged-in user's placed shop orders and
+// tour bookings.
+// -------------------------------------------------------------------------
+
+app.get('/api/orders', verifyToken, async (req, res) => {
+  try {
+    const orders = await Order.find({ user: req.user.id }).sort({ createdAt: -1 });
+
+    return res.status(200).json({
+      success: true,
+      orders: orders.map((order) => ({
+        id: order._id.toString(),
+        type: order.type,
+        description: order.description,
+        pointsEarned: order.pointsEarned,
+        status: order.status,
+        createdAt: order.createdAt,
+      })),
+    });
+  } catch (err) {
+    // eslint-disable-next-line no-console
+    console.error('[swach-farm-api] Orders fetch error:', err);
+    return res.status(500).json({
+      success: false,
+      message: 'Something went wrong while loading your orders. Please try again.',
+    });
+  }
+});
+
+// -------------------------------------------------------------------------
 // Cart route (protected) - persists a user's cart to their account so it
 // follows them across logout/login and devices.
 // -------------------------------------------------------------------------
@@ -607,6 +663,13 @@ app.post('/api/action', verifyToken, async (req, res) => {
     user.activityLog.push(logEntry);
 
     await user.save();
+
+    await Order.create({
+      user: user._id,
+      type,
+      description,
+      pointsEarned,
+    });
 
     await sendInquiryNotificationEmail({
       type,
