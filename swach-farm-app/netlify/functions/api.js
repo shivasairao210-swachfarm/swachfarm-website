@@ -112,6 +112,10 @@ const userSchema = new mongoose.Schema(
       type: [String],
       default: [],
     },
+    cart: {
+      type: Object,
+      default: {},
+    },
   },
   { timestamps: true }
 );
@@ -404,6 +408,7 @@ app.post('/api/auth/register', async (req, res) => {
         name: newUser.name,
         email: newUser.email,
         points: newUser.points,
+        cart: newUser.cart,
       },
     });
   } catch (err) {
@@ -470,6 +475,7 @@ app.post('/api/auth/login', async (req, res) => {
         name: user.name,
         email: user.email,
         points: user.points,
+        cart: user.cart,
       },
     });
   } catch (err) {
@@ -506,6 +512,7 @@ app.get('/api/dashboard/data', verifyToken, async (req, res) => {
         points: user.points,
         activityLog: user.activityLog,
         memberSince: user.createdAt,
+        cart: user.cart,
       },
     });
   } catch (err) {
@@ -514,6 +521,41 @@ app.get('/api/dashboard/data', verifyToken, async (req, res) => {
     return res.status(500).json({
       success: false,
       message: 'Something went wrong while loading your dashboard. Please try again.',
+    });
+  }
+});
+
+// -------------------------------------------------------------------------
+// Cart route (protected) - persists a user's cart to their account so it
+// follows them across logout/login and devices.
+// -------------------------------------------------------------------------
+
+app.put('/api/cart', verifyToken, async (req, res) => {
+  try {
+    const { cart } = req.body || {};
+
+    if (cart !== null && typeof cart !== 'undefined' && (typeof cart !== 'object' || Array.isArray(cart))) {
+      return res.status(400).json({ success: false, message: 'Cart must be an object.' });
+    }
+
+    const user = await User.findById(req.user.id);
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: 'User account could not be found.',
+      });
+    }
+
+    user.cart = cart || {};
+    await user.save();
+
+    return res.status(200).json({ success: true, cart: user.cart });
+  } catch (err) {
+    // eslint-disable-next-line no-console
+    console.error('[swach-farm-api] Cart save error:', err);
+    return res.status(500).json({
+      success: false,
+      message: 'Something went wrong while saving your cart. Please try again.',
     });
   }
 });

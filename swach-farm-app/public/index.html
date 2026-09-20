@@ -1854,6 +1854,17 @@
     try {
       localStorage.setItem('swachfarm_cart', JSON.stringify(state.cart));
     } catch (e) { /* ignore quota errors */ }
+
+    if (state.token) {
+      fetch(API_BASE + '/cart', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + state.token
+        },
+        body: JSON.stringify({ cart: state.cart })
+      }).catch(function () { /* best-effort sync, local copy already saved */ });
+    }
   }
 
   window.addToCart = function (productId, btnEl) {
@@ -2304,7 +2315,12 @@
         state.user = data.user;
         localStorage.setItem('swachfarm_token', state.token);
         localStorage.setItem('swachfarm_user', JSON.stringify(state.user));
+        if (data.user.cart && Object.keys(data.user.cart).length) {
+          state.cart = data.user.cart;
+          localStorage.setItem('swachfarm_cart', JSON.stringify(state.cart));
+        }
         updateAuthNavButton();
+        updateCartUI();
         closeAuthModal();
         showToast(data.message, 'success');
         evt.target.reset();
@@ -2353,7 +2369,12 @@
         state.user = data.user;
         localStorage.setItem('swachfarm_token', state.token);
         localStorage.setItem('swachfarm_user', JSON.stringify(state.user));
+        if (data.user.cart && Object.keys(data.user.cart).length) {
+          state.cart = data.user.cart;
+          localStorage.setItem('swachfarm_cart', JSON.stringify(state.cart));
+        }
         updateAuthNavButton();
+        updateCartUI();
         closeAuthModal();
         showToast(data.message, 'success');
         evt.target.reset();
