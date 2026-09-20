@@ -203,10 +203,44 @@ const INQUIRY_TYPE_LABELS = {
   tour: 'Guest Farm Tour Booking',
 };
 
-async function sendInquiryNotificationEmail(inquiry) {
-  if (!BREVO_API_KEY || !NOTIFY_EMAIL) {
+async function sendBrevoEmail({ toEmail, toName, subject, htmlContent }) {
+  if (!BREVO_API_KEY) {
     // eslint-disable-next-line no-console
-    console.warn('[swach-farm-api] Skipping email notification: BREVO_API_KEY or NOTIFY_EMAIL not configured.');
+    console.warn('[swach-farm-api] Skipping email: BREVO_API_KEY not configured.');
+    return;
+  }
+
+  try {
+    const response = await fetch('https://api.brevo.com/v3/smtp/email', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        'api-key': BREVO_API_KEY,
+      },
+      body: JSON.stringify({
+        sender: { name: 'Swach Farm', email: NOTIFY_SENDER_EMAIL },
+        to: [{ email: toEmail, name: toName || undefined }],
+        subject,
+        htmlContent,
+      }),
+    });
+
+    if (!response.ok) {
+      const body = await response.text();
+      // eslint-disable-next-line no-console
+      console.error('[swach-farm-api] Brevo email send failed:', response.status, body);
+    }
+  } catch (err) {
+    // eslint-disable-next-line no-console
+    console.error('[swach-farm-api] Brevo email send error:', err.message);
+  }
+}
+
+async function sendInquiryNotificationEmail(inquiry) {
+  if (!NOTIFY_EMAIL) {
+    // eslint-disable-next-line no-console
+    console.warn('[swach-farm-api] Skipping email notification: NOTIFY_EMAIL not configured.');
     return;
   }
 
@@ -225,31 +259,58 @@ async function sendInquiryNotificationEmail(inquiry) {
     .map(([label, value]) => `<tr><td style="padding:4px 12px 4px 0;color:#555;"><strong>${label}</strong></td><td style="padding:4px 0;">${value}</td></tr>`)
     .join('');
 
-  try {
-    const response = await fetch('https://api.brevo.com/v3/smtp/email', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-        'api-key': BREVO_API_KEY,
-      },
-      body: JSON.stringify({
-        sender: { name: 'Swach Farm Website', email: NOTIFY_SENDER_EMAIL },
-        to: [{ email: NOTIFY_EMAIL }],
-        subject: `New ${INQUIRY_TYPE_LABELS[inquiry.type] || inquiry.type} from ${inquiry.name}`,
-        htmlContent: `<table cellpadding="0" cellspacing="0">${htmlRows}</table>`,
-      }),
-    });
+  await sendBrevoEmail({
+    toEmail: NOTIFY_EMAIL,
+    subject: `New ${INQUIRY_TYPE_LABELS[inquiry.type] || inquiry.type} from ${inquiry.name}`,
+    htmlContent: `<table cellpadding="0" cellspacing="0">${htmlRows}</table>`,
+  });
+}
 
-    if (!response.ok) {
-      const body = await response.text();
-      // eslint-disable-next-line no-console
-      console.error('[swach-farm-api] Brevo email send failed:', response.status, body);
+const CUSTOMER_CONFIRMATION_SUBJECTS = {
+  contact: 'We received your message - Swach Farm',
+  shop: 'Your Swach Farm order is confirmed',
+  tour: 'Your Swach Farm tour booking is confirmed',
+};
+
+async function sendCustomerConfirmationEmail({ toEmail, toName, type, description, items, fulfillment, total, tourDate, tourGuests, tourSlot }) {
+  if (!toEmail) return;
+
+  let bodyHtml = `<p>Hi ${toName || 'there'},</p>`;
+
+  if (type === 'contact') {
+    bodyHtml += '<p>Thanks for reaching out to Swach Farm! We\'ve received your message and our team will get back to you shortly.</p>';
+  } else if (type === 'shop') {
+    bodyHtml += '<p>Thank you for your order! Here\'s a summary:</p>';
+    if (Array.isArray(items) && items.length) {
+      const itemRows = items
+        .map((item) => `<tr><td style="padding:4px 12px 4px 0;">${item.qty || 1}x ${item.name}</td><td style="padding:4px 0;text-align:right;">${item.price ? '₹' + item.price * (item.qty || 1) : ''}</td></tr>`)
+        .join('');
+      bodyHtml += `<table cellpadding="0" cellspacing="0" style="width:100%;max-width:400px;">${itemRows}</table>`;
+    } else if (description) {
+      bodyHtml += `<p>${description}</p>`;
     }
-  } catch (err) {
-    // eslint-disable-next-line no-console
-    console.error('[swach-farm-api] Brevo email send error:', err.message);
+    if (fulfillment) bodyHtml += `<p><strong>Fulfillment:</strong> ${fulfillment}</p>`;
+    if (typeof total === 'number') bodyHtml += `<p><strong>Total: ₹${total}</strong></p>`;
+    bodyHtml += '<p>We\'ll be in touch if we need anything else. See you at the farm!</p>';
+  } else if (type === 'tour') {
+    bodyHtml += '<p>Your farm tour booking is confirmed! Here are the details:</p>';
+    bodyHtml += '<table cellpadding="0" cellspacing="0">';
+    if (tourDate) bodyHtml += `<tr><td style="padding:4px 12px 4px 0;"><strong>Date</strong></td><td>${tourDate}</td></tr>`;
+    if (tourGuests) bodyHtml += `<tr><td style="padding:4px 12px 4px 0;"><strong>Guests</strong></td><td>${tourGuests}</td></tr>`;
+    if (tourSlot) bodyHtml += `<tr><td style="padding:4px 12px 4px 0;"><strong>Time Slot</strong></td><td>${tourSlot}</td></tr>`;
+    if (!tourDate && !tourGuests && !tourSlot && description) bodyHtml += `<tr><td>${description}</td></tr>`;
+    bodyHtml += '</table>';
+    bodyHtml += '<p>We look forward to hosting you at Swach Farm!</p>';
   }
+
+  bodyHtml += '<p style="color:#888;font-size:0.85em;">Swach Farm &bull; Revelly Village, Choppadandi Mandal, Karimnagar &bull; 9032858342</p>';
+
+  await sendBrevoEmail({
+    toEmail,
+    toName,
+    subject: CUSTOMER_CONFIRMATION_SUBJECTS[type] || 'Swach Farm',
+    htmlContent: bodyHtml,
+  });
 }
 
 // -------------------------------------------------------------------------
@@ -345,7 +406,7 @@ app.get('/api/health', (req, res) => {
 
 app.post('/api/inquiries', async (req, res) => {
   try {
-    const { type, name, phone, email, address, service, message, description } = req.body || {};
+    const { type, name, phone, email, address, service, message, description, items, fulfillment, total, tourDate, tourGuests, tourSlot } = req.body || {};
 
     if (!['contact', 'shop', 'tour'].includes(type)) {
       return res.status(400).json({
@@ -372,6 +433,21 @@ app.post('/api/inquiries', async (req, res) => {
     });
 
     await sendInquiryNotificationEmail(inquiry);
+
+    if (inquiry.email) {
+      await sendCustomerConfirmationEmail({
+        toEmail: inquiry.email,
+        toName: inquiry.name,
+        type: inquiry.type,
+        description: inquiry.description,
+        items,
+        fulfillment,
+        total,
+        tourDate,
+        tourGuests,
+        tourSlot,
+      });
+    }
 
     return res.status(201).json({
       success: true,
@@ -718,6 +794,19 @@ app.post('/api/action', verifyToken, async (req, res) => {
       phone: 'N/A (logged-in account, no phone on file)',
       email: user.email,
       description,
+    });
+
+    await sendCustomerConfirmationEmail({
+      toEmail: user.email,
+      toName: user.name,
+      type,
+      description,
+      items: sanitizedItems,
+      fulfillment,
+      total,
+      tourDate,
+      tourGuests,
+      tourSlot,
     });
 
     return res.status(200).json({

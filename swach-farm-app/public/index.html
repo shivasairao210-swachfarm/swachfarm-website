@@ -1515,6 +1515,10 @@
                 <input type="tel" id="tourPhone" required placeholder="10-digit mobile number" />
               </div>
               <div class="form-group">
+                <label for="tourEmail">Email (optional, for booking confirmation)</label>
+                <input type="email" id="tourEmail" placeholder="you@example.com" />
+              </div>
+              <div class="form-group">
                 <label for="tourDate">Preferred Date</label>
                 <input type="date" id="tourDate" required />
               </div>
@@ -1626,6 +1630,10 @@
       <div class="form-group">
         <label for="guestPhone">Phone Number</label>
         <input type="tel" id="guestPhone" placeholder="10-digit mobile number" />
+      </div>
+      <div class="form-group">
+        <label for="guestEmail">Email (optional, for order confirmation)</label>
+        <input type="email" id="guestEmail" placeholder="you@example.com" />
       </div>
       <div class="form-group">
         <label for="guestAddress">Address</label>
@@ -2086,6 +2094,7 @@
     if (!state.token) {
       var guestName = document.getElementById('guestName').value.trim();
       var guestPhone = document.getElementById('guestPhone').value.trim();
+      var guestEmail = document.getElementById('guestEmail').value.trim();
       var guestAddress = document.getElementById('guestAddress').value.trim();
 
       if (!guestName || !guestPhone) {
@@ -2104,8 +2113,12 @@
             type: 'shop',
             name: guestName,
             phone: guestPhone,
+            email: guestEmail,
             address: guestAddress,
-            description: fullDescription
+            description: fullDescription,
+            items: orderItems,
+            fulfillment: fulfillmentLabel,
+            total: orderTotal
           })
         });
         var guestData = await guestRes.json();
@@ -2121,6 +2134,7 @@
           closeCart();
           document.getElementById('guestName').value = '';
           document.getElementById('guestPhone').value = '';
+          document.getElementById('guestEmail').value = '';
           document.getElementById('guestAddress').value = '';
         } else {
           showToast(guestData.message || 'Could not submit your order right now. Please call us at 9032858342.', 'error');
@@ -2194,6 +2208,7 @@
 
     var name = document.getElementById('tourName').value.trim();
     var phone = document.getElementById('tourPhone').value.trim();
+    var email = document.getElementById('tourEmail').value.trim();
     var date = document.getElementById('tourDate').value;
     var guests = parseInt(document.getElementById('tourGuests').value, 10);
 
@@ -2222,7 +2237,16 @@
         var guestRes = await fetch(API_BASE + '/inquiries', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ type: 'tour', name: name, phone: phone, description: description })
+          body: JSON.stringify({
+            type: 'tour',
+            name: name,
+            phone: phone,
+            email: email,
+            description: description,
+            tourDate: date,
+            tourGuests: guests,
+            tourSlot: state.selectedSlot
+          })
         });
         var guestData = await guestRes.json();
         if (guestRes.ok && guestData.success) {
