@@ -1,0 +1,2367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Swach Farm | Fresh Pure Milk Delivered to Your Doorstep - Karimnagar</title>
+<meta name="description" content="Swach Farm delivers fresh, pure milk, cheese and butter from our natural farm in Revalle village, Karimnagar district, Telangana - straight to your doorstep. No preservatives, no chemicals, just health for every family." />
+<link rel="icon" type="image/jpeg" href="assets/logo.jpg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --forest-dark: #0f2e20;
+    --forest: #1c4a34;
+    --forest-light: #2d6b4a;
+    --forest-pale: #e7efe8;
+    --cream: #faf6ec;
+    --cream-dark: #f1e7d0;
+    --white: #ffffff;
+    --gold: #c99a3d;
+    --gold-light: #e6c688;
+    --gold-dark: #a87c26;
+    --text-dark: #1a2820;
+    --text-muted: #5c6b62;
+    --danger: #b3452c;
+    --success: #2f6b4a;
+    --shadow-sm: 0 4px 14px rgba(15, 46, 32, 0.08);
+    --shadow-md: 0 10px 30px rgba(15, 46, 32, 0.14);
+    --shadow-lg: 0 20px 50px rgba(15, 46, 32, 0.22);
+    --radius-sm: 10px;
+    --radius-md: 16px;
+    --radius-lg: 26px;
+    --nav-height: 78px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--cream);
+    color: var(--text-dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Playfair Display', serif;
+    color: var(--forest-dark);
+    line-height: 1.2;
+  }
+
+  a { text-decoration: none; color: inherit; }
+  ul { list-style: none; }
+  img { max-width: 100%; display: block; }
+  button { font-family: inherit; cursor: pointer; border: none; }
+
+  .container {
+    width: 100%;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ---------- Buttons ---------- */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 13px 26px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+    white-space: nowrap;
+  }
+  .btn:active { transform: scale(0.97); }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--gold-light), var(--gold-dark));
+    color: var(--forest-dark);
+    box-shadow: var(--shadow-sm);
+  }
+  .btn-primary:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+  .btn-outline {
+    background: transparent;
+    border: 2px solid var(--forest);
+    color: var(--forest);
+  }
+  .btn-outline:hover { background: var(--forest); color: var(--cream); }
+  .btn-dark {
+    background: var(--forest-dark);
+    color: var(--cream);
+  }
+  .btn-dark:hover { background: var(--forest); transform: translateY(-2px); }
+  .btn-danger-outline {
+    background: transparent;
+    border: 2px solid var(--danger);
+    color: var(--danger);
+  }
+  .btn-danger-outline:hover { background: var(--danger); color: var(--white); }
+  .btn-block { width: 100%; }
+  .btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none !important; }
+
+  /* ---------- Navbar ---------- */
+  #navbar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: var(--nav-height);
+    background: rgba(250, 246, 236, 0.92);
+    backdrop-filter: blur(10px);
+    z-index: 500;
+    box-shadow: var(--shadow-sm);
+  }
+  .nav-inner {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: var(--forest-dark);
+  }
+  .nav-brand img {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: var(--shadow-sm);
+  }
+  .nav-brand small {
+    display: block;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 0.68rem;
+    color: var(--gold-dark);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    list-style: none;
+  }
+  .nav-links a, .nav-links button.nav-link-btn {
+    display: inline-block;
+    padding: 9px 14px;
+    border-radius: 999px;
+    font-weight: 500;
+    font-size: 0.94rem;
+    color: var(--text-dark);
+    background: transparent;
+    transition: background 0.18s ease, color 0.18s ease;
+  }
+  .nav-links a:hover, .nav-links button.nav-link-btn:hover {
+    background: var(--forest-pale);
+    color: var(--forest-dark);
+  }
+  .nav-links a.active, .nav-links button.nav-link-btn.active {
+    background: var(--forest-dark);
+    color: var(--cream);
+  }
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .cart-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--forest-pale);
+    color: var(--forest-dark);
+    font-size: 1.15rem;
+    transition: background 0.18s ease, transform 0.18s ease;
+  }
+  .cart-btn:hover { background: var(--cream-dark); transform: translateY(-2px); }
+  .cart-count {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 4px;
+    border-radius: 50%;
+    background: var(--danger);
+    color: var(--white);
+    font-size: 0.7rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .nav-toggle {
+    display: none;
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    background: var(--forest-pale);
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    color: var(--forest-dark);
+  }
+
+  /* ---------- Views / Router ---------- */
+  main { padding-top: var(--nav-height); min-height: 100vh; }
+  .view { display: none; animation: fadeIn 0.45s ease; }
+  .view.active { display: block; }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    position: relative;
+    background: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.08), transparent 60%),
+                linear-gradient(135deg, var(--forest-dark), var(--forest));
+    color: var(--cream);
+    padding: 90px 0 110px;
+    overflow: hidden;
+  }
+  .hero::after {
+    content: "";
+    position: absolute;
+    bottom: -60px; right: -60px;
+    width: 320px; height: 320px;
+    background: var(--gold);
+    opacity: 0.12;
+    border-radius: 50%;
+  }
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: center;
+    gap: 50px;
+    position: relative;
+    z-index: 2;
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.25);
+    padding: 7px 16px;
+    border-radius: 999px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    margin-bottom: 22px;
+  }
+  .hero h1 {
+    color: var(--white);
+    font-size: 2.9rem;
+    margin-bottom: 18px;
+  }
+  .hero h1 span { color: var(--gold-light); }
+  .hero p {
+    color: rgba(250,246,236,0.86);
+    font-size: 1.08rem;
+    max-width: 520px;
+    margin-bottom: 30px;
+  }
+  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 34px; }
+  .hero-stats { display: flex; gap: 30px; flex-wrap: wrap; }
+  .hero-stat strong { display: block; font-size: 1.6rem; color: var(--gold-light); font-family: 'Playfair Display', serif; }
+  .hero-stat span { font-size: 0.82rem; color: rgba(250,246,236,0.7); }
+  .hero-visual {
+    background: var(--cream);
+    border-radius: var(--radius-lg);
+    padding: 30px;
+    box-shadow: var(--shadow-lg);
+    color: var(--text-dark);
+    position: relative;
+  }
+  .hero-visual-logo {
+    width: 130px; height: 130px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 18px;
+    box-shadow: var(--shadow-md);
+    border: 4px solid var(--white);
+  }
+  .hero-visual h3 { text-align: center; font-size: 1.25rem; margin-bottom: 6px; }
+  .hero-visual p { text-align: center; color: var(--text-muted); font-size: 0.92rem; margin-bottom: 18px; }
+  .hero-visual-tags { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+  .tag-pill {
+    background: var(--forest-pale);
+    color: var(--forest-dark);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 600;
+  }
+
+  /* ---------- Section shell ---------- */
+  section.page-section { padding: 90px 0; }
+  section.page-section.alt { background: var(--cream-dark); }
+  .section-head { text-align: center; max-width: 640px; margin: 0 auto 50px; }
+  .section-tag {
+    display: inline-block;
+    color: var(--gold-dark);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-size: 0.78rem;
+    margin-bottom: 10px;
+  }
+  .section-head h2 { font-size: 2.1rem; margin-bottom: 14px; }
+  .section-head p { color: var(--text-muted); font-size: 1rem; }
+
+  /* ---------- About ---------- */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 50px;
+    align-items: center;
+  }
+  .about-image {
+    background: var(--forest-dark);
+    border-radius: var(--radius-lg);
+    padding: 36px;
+    text-align: center;
+    box-shadow: var(--shadow-md);
+  }
+  .about-image img {
+    width: 190px; height: 190px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 18px;
+    border: 5px solid var(--gold-light);
+  }
+  .about-image h4 { color: var(--cream); font-size: 1.2rem; }
+  .about-image p { color: rgba(250,246,236,0.75); font-size: 0.88rem; margin-top: 6px; }
+  .about-text p { color: var(--text-muted); margin-bottom: 16px; }
+  .about-points {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 26px;
+  }
+  .about-point {
+    background: var(--white);
+    border-radius: var(--radius-md);
+    padding: 18px;
+    box-shadow: var(--shadow-sm);
+    border-left: 4px solid var(--gold);
+  }
+  .about-point strong { display: block; margin-bottom: 4px; color: var(--forest-dark); font-size: 0.98rem; }
+  .about-point span { font-size: 0.84rem; color: var(--text-muted); }
+
+  /* ---------- Farm Gallery Carousel ---------- */
+  .carousel-wrapper {
+    position: relative;
+    max-width: 980px;
+    margin: 0 auto;
+    height: 460px;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+  }
+  .carousel-track {
+    display: flex;
+    height: 100%;
+    transition: transform 0.55s cubic-bezier(0.65, 0, 0.35, 1);
+  }
+  .carousel-slide {
+    flex: 0 0 100%;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  .carousel-caption {
+    width: 100%;
+    padding: 30px 34px;
+    background: linear-gradient(to top, rgba(15, 46, 32, 0.88), rgba(15, 46, 32, 0.05) 75%, transparent);
+    color: var(--cream);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .carousel-caption .cap-icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.16);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    flex-shrink: 0;
+  }
+  .carousel-caption strong {
+    display: block;
+    font-size: 1.08rem;
+    color: var(--white);
+    font-family: 'Playfair Display', serif;
+  }
+  .carousel-caption span {
+    font-size: 0.82rem;
+    color: rgba(250, 246, 236, 0.78);
+  }
+  .carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.88);
+    color: var(--forest-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    box-shadow: var(--shadow-sm);
+    z-index: 5;
+    transition: background 0.18s ease, transform 0.18s ease;
+  }
+  .carousel-arrow:hover { background: var(--gold-light); transform: translateY(-50%) scale(1.08); }
+  .carousel-arrow.prev { left: 16px; }
+  .carousel-arrow.next { right: 16px; }
+  .carousel-dots {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 5;
+  }
+  .carousel-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.55);
+    cursor: pointer;
+    transition: background 0.2s ease, width 0.2s ease;
+    border: none;
+    padding: 0;
+  }
+  .carousel-dot.active { background: var(--gold); width: 24px; border-radius: 999px; }
+  .gallery-hint {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    margin-top: 18px;
+  }
+  @media (max-width: 640px) {
+    .carousel-wrapper { height: 300px; border-radius: var(--radius-md); }
+    .carousel-caption { padding: 18px 18px; }
+    .carousel-caption .cap-icon { width: 38px; height: 38px; font-size: 1.15rem; }
+    .carousel-arrow { width: 36px; height: 36px; font-size: 1rem; }
+  }
+
+  /* ---------- Delivery strip ---------- */
+  .delivery-strip {
+    background: linear-gradient(135deg, var(--forest), var(--forest-dark));
+    border-radius: var(--radius-lg);
+    padding: 40px;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 30px;
+    align-items: center;
+    color: var(--cream);
+    box-shadow: var(--shadow-md);
+  }
+  .delivery-strip h3 { color: var(--white); font-size: 1.6rem; margin-bottom: 12px; }
+  .delivery-strip p { color: rgba(250,246,236,0.85); margin-bottom: 18px; }
+  .delivery-list { display: flex; flex-direction: column; gap: 10px; }
+  .delivery-list li { display: flex; gap: 10px; align-items: flex-start; font-size: 0.92rem; color: rgba(250,246,236,0.92); }
+  .delivery-list li b { color: var(--gold-light); }
+  .delivery-card {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: var(--radius-md);
+    padding: 22px;
+  }
+  .delivery-card h4 { color: var(--gold-light); font-size: 1.05rem; margin-bottom: 10px; }
+  .delivery-card ul li { color: rgba(250,246,236,0.88); font-size: 0.9rem; padding: 5px 0; border-bottom: 1px dashed rgba(255,255,255,0.15); }
+  .delivery-card ul li:last-child { border-bottom: none; }
+
+  /* ---------- Product Grid ---------- */
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 28px;
+  }
+  .product-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.22s ease, box-shadow 0.22s ease;
+    display: flex;
+    flex-direction: column;
+  }
+  .product-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
+  .product-media {
+    height: 170px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    position: relative;
+  }
+  .product-media.milk { background: linear-gradient(135deg, #eaf3ea, #cfe4d0); }
+  .product-media.ghee { background: linear-gradient(135deg, #fff2df, #f6c667); }
+  .product-media.paneer { background: linear-gradient(135deg, #fdfbf5, #f0e9d6); }
+  .product-badge {
+    position: absolute;
+    top: 14px; left: 14px;
+    background: var(--forest-dark);
+    color: var(--cream);
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: 999px;
+    letter-spacing: 0.04em;
+  }
+  .product-body { padding: 22px 22px 26px; display: flex; flex-direction: column; flex: 1; }
+  .product-body h3 { font-size: 1.2rem; margin-bottom: 8px; }
+  .product-body p { color: var(--text-muted); font-size: 0.88rem; flex: 1; margin-bottom: 16px; }
+  .product-footer { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+  .product-price { font-size: 1.25rem; font-weight: 700; color: var(--forest-dark); font-family: 'Playfair Display', serif; }
+  .product-price span { font-size: 0.75rem; color: var(--text-muted); font-weight: 400; font-family: 'Poppins', sans-serif; }
+  .add-cart-btn {
+    background: var(--forest-dark);
+    color: var(--cream);
+    padding: 10px 18px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: background 0.18s ease, transform 0.18s ease;
+  }
+  .add-cart-btn:hover { background: var(--gold-dark); transform: translateY(-2px); }
+  .add-cart-btn.added { background: var(--success); }
+
+  .shop-note {
+    margin-top: 36px;
+    background: var(--forest-pale);
+    border-radius: var(--radius-md);
+    padding: 20px 26px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    color: var(--forest-dark);
+    font-size: 0.9rem;
+  }
+
+  /* ---------- FAQ ---------- */
+  .faq-list { max-width: 780px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
+  .faq-item {
+    background: var(--white);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+  }
+  .faq-question {
+    width: 100%;
+    background: transparent;
+    padding: 18px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 600;
+    font-size: 0.98rem;
+    color: var(--forest-dark);
+    text-align: left;
+  }
+  .faq-question .icon { transition: transform 0.25s ease; color: var(--gold-dark); font-size: 1.1rem; }
+  .faq-item.open .faq-question .icon { transform: rotate(45deg); }
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    padding: 0 22px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+  }
+  .faq-item.open .faq-answer { max-height: 240px; padding: 0 22px 20px; }
+
+  /* ---------- Contact ---------- */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 40px;
+  }
+  .contact-info {
+    background: var(--forest-dark);
+    color: var(--cream);
+    border-radius: var(--radius-lg);
+    padding: 34px;
+  }
+  .contact-info h3 { color: var(--white); font-size: 1.3rem; margin-bottom: 8px; }
+  .contact-info > p { color: rgba(250,246,236,0.8); font-size: 0.9rem; margin-bottom: 26px; }
+  .contact-row { display: flex; gap: 14px; margin-bottom: 20px; align-items: flex-start; }
+  .contact-row .ci-icon {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.12);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    font-size: 1.05rem;
+  }
+  .contact-row div strong { display: block; color: var(--gold-light); font-size: 0.86rem; margin-bottom: 3px; }
+  .contact-row div span, .contact-row div a { color: rgba(250,246,236,0.9); font-size: 0.9rem; }
+  .contact-form-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    padding: 34px;
+  }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .form-group { display: flex; flex-direction: column; gap: 7px; margin-bottom: 18px; }
+  .form-group.full { grid-column: 1 / -1; }
+  .form-group label { font-size: 0.85rem; font-weight: 600; color: var(--forest-dark); }
+  .form-group input, .form-group select, .form-group textarea {
+    padding: 12px 14px;
+    border: 1.5px solid #e2dbc9;
+    border-radius: var(--radius-sm);
+    font-family: inherit;
+    font-size: 0.92rem;
+    background: var(--cream);
+    color: var(--text-dark);
+    transition: border-color 0.18s ease;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    outline: none;
+    border-color: var(--forest);
+  }
+  .form-group textarea { resize: vertical; min-height: 90px; }
+
+  /* ---------- Footer ---------- */
+  footer {
+    background: var(--forest-dark);
+    color: rgba(250,246,236,0.75);
+    padding: 60px 0 26px;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
+    gap: 40px;
+    margin-bottom: 40px;
+  }
+  .footer-brand { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+  .footer-brand img { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; }
+  .footer-brand strong { color: var(--white); font-family: 'Playfair Display', serif; font-size: 1.15rem; }
+  footer h5 { color: var(--gold-light); font-size: 0.92rem; margin-bottom: 16px; letter-spacing: 0.04em; text-transform: uppercase; }
+  footer ul li { margin-bottom: 10px; font-size: 0.88rem; }
+  footer ul li a:hover { color: var(--gold-light); }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.12);
+    padding-top: 22px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 0.82rem;
+  }
+  .social-row { display: flex; gap: 10px; margin-top: 10px; }
+  .social-row a {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+  }
+  .social-row a:hover { background: var(--gold); color: var(--forest-dark); }
+
+  /* ---------- Cart Drawer ---------- */
+  #cart-overlay {
+    position: fixed; inset: 0;
+    background: rgba(15, 46, 32, 0.55);
+    z-index: 700;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  #cart-overlay.open { opacity: 1; pointer-events: auto; }
+  #cart-drawer {
+    position: fixed;
+    top: 0; right: -420px;
+    width: 100%;
+    max-width: 420px;
+    height: 100vh;
+    background: var(--cream);
+    z-index: 701;
+    box-shadow: -10px 0 40px rgba(0,0,0,0.25);
+    transition: right 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    display: flex;
+    flex-direction: column;
+  }
+  #cart-drawer.open { right: 0; }
+  .cart-header {
+    padding: 22px 24px;
+    background: var(--forest-dark);
+    color: var(--cream);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .cart-header h3 { color: var(--white); font-size: 1.2rem; }
+  .cart-close { font-size: 1.4rem; color: var(--cream); background: transparent; }
+  .cart-body { flex: 1; overflow-y: auto; padding: 20px 24px; }
+  .cart-empty { text-align: center; color: var(--text-muted); padding: 60px 10px; font-size: 0.92rem; }
+  .cart-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--cream-dark);
+  }
+  .cart-item-icon {
+    width: 48px; height: 48px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem;
+    background: var(--forest-pale);
+    flex-shrink: 0;
+  }
+  .cart-item-info { flex: 1; }
+  .cart-item-info strong { display: block; font-size: 0.92rem; color: var(--forest-dark); }
+  .cart-item-info span { font-size: 0.8rem; color: var(--text-muted); }
+  .cart-qty { display: flex; align-items: center; gap: 8px; }
+  .qty-btn {
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    background: var(--forest-pale);
+    color: var(--forest-dark);
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.95rem;
+  }
+  .qty-btn:hover { background: var(--gold-light); }
+  .cart-remove { color: var(--danger); font-size: 0.78rem; font-weight: 600; margin-top: 4px; }
+
+  .fulfillment-toggle {
+    display: flex;
+    gap: 8px;
+    background: var(--cream-dark);
+    padding: 5px;
+    border-radius: 999px;
+    margin: 18px 0 4px;
+  }
+  .fulfillment-toggle button {
+    flex: 1;
+    padding: 9px 8px;
+    border-radius: 999px;
+    background: transparent;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-muted);
+  }
+  .fulfillment-toggle button.active {
+    background: var(--forest-dark);
+    color: var(--cream);
+  }
+  .fulfillment-note {
+    background: #fff6e6;
+    border: 1px solid var(--gold-light);
+    border-radius: var(--radius-sm);
+    padding: 12px 14px;
+    font-size: 0.8rem;
+    color: var(--gold-dark);
+    margin: 14px 0;
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  .cart-footer {
+    padding: 20px 24px 26px;
+    border-top: 1px solid var(--cream-dark);
+    background: var(--white);
+  }
+  .cart-total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--forest-dark);
+  }
+
+  /* ---------- Auth Modal ---------- */
+  #auth-modal-overlay {
+    position: fixed; inset: 0;
+    background: rgba(15,46,32,0.6);
+    z-index: 800;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  #auth-modal-overlay.open { display: flex; }
+  #auth-modal {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    width: 100%;
+    max-width: 420px;
+    padding: 38px 34px;
+    position: relative;
+    box-shadow: var(--shadow-lg);
+    animation: fadeIn 0.3s ease;
+  }
+  .modal-close {
+    position: absolute;
+    top: 18px; right: 18px;
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    background: var(--forest-pale);
+    color: var(--forest-dark);
+    font-size: 1.1rem;
+  }
+  .auth-tabs {
+    display: flex;
+    background: var(--cream-dark);
+    border-radius: 999px;
+    padding: 5px;
+    margin-bottom: 26px;
+  }
+  .auth-tabs button {
+    flex: 1;
+    padding: 10px;
+    border-radius: 999px;
+    background: transparent;
+    font-weight: 600;
+    font-size: 0.88rem;
+    color: var(--text-muted);
+  }
+  .auth-tabs button.active { background: var(--forest-dark); color: var(--cream); }
+  .auth-form { display: none; flex-direction: column; gap: 14px; }
+  .auth-form.active { display: flex; }
+  .auth-form h3 { font-size: 1.35rem; margin-bottom: 2px; }
+  .auth-form p.sub { color: var(--text-muted); font-size: 0.86rem; margin-bottom: 6px; }
+  .auth-error {
+    background: #fdeceb;
+    color: var(--danger);
+    border-radius: var(--radius-sm);
+    padding: 10px 12px;
+    font-size: 0.82rem;
+    display: none;
+  }
+  .auth-error.show { display: block; }
+
+  /* ---------- Toasts ---------- */
+  #toast-container {
+    position: fixed;
+    top: 96px; right: 20px;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 340px;
+  }
+  .toast {
+    background: var(--forest-dark);
+    color: var(--cream);
+    padding: 14px 18px;
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-md);
+    font-size: 0.88rem;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    animation: slideIn 0.3s ease;
+  }
+  .toast.error { background: var(--danger); }
+  .toast.success { background: var(--success); }
+  .toast.warn { background: var(--gold-dark); }
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateX(30px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  /* ---------- Tour booking ---------- */
+  .tours-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 44px;
+    align-items: flex-start;
+  }
+  .tour-highlights { display: flex; flex-direction: column; gap: 18px; }
+  .tour-highlight-card {
+    background: var(--white);
+    border-radius: var(--radius-md);
+    padding: 20px 22px;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .tour-highlight-icon {
+    width: 46px; height: 46px;
+    border-radius: 14px;
+    background: var(--forest-pale);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem;
+    flex-shrink: 0;
+  }
+  .tour-highlight-card h4 { font-size: 1rem; margin-bottom: 4px; }
+  .tour-highlight-card p { color: var(--text-muted); font-size: 0.85rem; }
+  .tour-form-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    padding: 34px;
+  }
+  .slot-options { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .slot-option {
+    border: 1.5px solid #e2dbc9;
+    border-radius: var(--radius-sm);
+    padding: 12px 8px;
+    text-align: center;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    background: var(--cream);
+  }
+  .slot-option.selected {
+    border-color: var(--forest);
+    background: var(--forest-pale);
+    color: var(--forest-dark);
+  }
+
+  /* ---------- Dashboard ---------- */
+  .dashboard-wrapper { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 32px; align-items: flex-start; }
+  .dash-profile-card {
+    background: linear-gradient(160deg, var(--forest-dark), var(--forest));
+    color: var(--cream);
+    border-radius: var(--radius-lg);
+    padding: 32px 28px;
+    box-shadow: var(--shadow-md);
+  }
+  .dash-avatar {
+    width: 78px; height: 78px;
+    border-radius: 50%;
+    background: var(--gold);
+    color: var(--forest-dark);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.9rem;
+    font-weight: 700;
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 16px;
+  }
+  .dash-profile-card h3 { color: var(--white); font-size: 1.3rem; margin-bottom: 4px; }
+  .dash-profile-card .dash-email { color: rgba(250,246,236,0.75); font-size: 0.88rem; margin-bottom: 24px; }
+  .dash-points-label { display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 8px; color: rgba(250,246,236,0.9); }
+  .dash-points-bar {
+    height: 12px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.15);
+    overflow: hidden;
+    margin-bottom: 6px;
+  }
+  .dash-points-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--gold-light), var(--gold));
+    border-radius: 999px;
+    transition: width 0.6s ease;
+    width: 0%;
+  }
+  .dash-points-hint { font-size: 0.75rem; color: rgba(250,246,236,0.6); margin-bottom: 24px; }
+  .dash-logout-btn { width: 100%; }
+  .dash-history-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    padding: 30px;
+  }
+  .dash-history-card h3 { font-size: 1.2rem; margin-bottom: 4px; }
+  .dash-history-card > p.sub { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 20px; }
+  .history-list { display: flex; flex-direction: column; gap: 12px; max-height: 440px; overflow-y: auto; }
+  .history-item {
+    background: var(--cream);
+    border-left: 3px solid var(--gold);
+    border-radius: var(--radius-sm);
+    padding: 13px 16px;
+    font-size: 0.86rem;
+    color: var(--text-dark);
+  }
+  .history-empty { text-align: center; padding: 40px 10px; color: var(--text-muted); font-size: 0.9rem; }
+  .dash-loading { text-align: center; padding: 60px 10px; color: var(--text-muted); }
+  .dash-guest-notice {
+    background: #fff6e6;
+    border: 1px solid var(--gold-light);
+    border-radius: var(--radius-md);
+    padding: 30px;
+    text-align: center;
+  }
+  .dash-guest-notice h3 { margin-bottom: 10px; }
+  .dash-guest-notice p { color: var(--text-muted); margin-bottom: 20px; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 980px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-visual { max-width: 420px; margin: 0 auto; }
+    .about-grid, .contact-grid, .tours-wrapper, .dashboard-wrapper, .delivery-strip { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 800px) {
+    .nav-links { display: none; }
+    .nav-toggle { display: flex; }
+    .nav-links.mobile-open {
+      display: flex;
+      position: absolute;
+      top: var(--nav-height);
+      left: 0; right: 0;
+      background: var(--cream);
+      flex-direction: column;
+      padding: 16px;
+      box-shadow: var(--shadow-md);
+    }
+    .nav-links.mobile-open a, .nav-links.mobile-open button.nav-link-btn { width: 100%; text-align: left; }
+  }
+  @media (max-width: 640px) {
+    .hero h1 { font-size: 2.1rem; }
+    section.page-section { padding: 60px 0; }
+    .form-grid { grid-template-columns: 1fr; }
+    .about-points { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .slot-options { grid-template-columns: 1fr; }
+    #cart-drawer { max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<div id="toast-container"></div>
+
+<!-- ============================= NAVBAR ============================= -->
+<header id="navbar">
+  <div class="container nav-inner">
+    <a href="#" class="nav-brand" onclick="goHome(event)">
+      <img src="assets/logo.jpg" alt="Swach Farm logo" />
+      <span>Swach Farm<small>For Better Tomorrow</small></span>
+    </a>
+
+    <button class="nav-toggle" id="navToggleBtn" onclick="toggleMobileNav()">&#9776;</button>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#" data-view="home" onclick="showView('home', event)">Home</a></li>
+      <li><a href="#about" onclick="gotoSection(event,'about')">About</a></li>
+      <li><a href="#gallery" onclick="gotoSection(event,'gallery')">Gallery</a></li>
+      <li><a href="#" data-view="shop" onclick="showView('shop', event)">Farm Shop</a></li>
+      <li><a href="#" data-view="tours" onclick="showView('tours', event)">Book Tours</a></li>
+      <li><a href="#faq" onclick="gotoSection(event,'faq')">FAQ</a></li>
+      <li><a href="#contact" onclick="gotoSection(event,'contact')">Contact</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <button class="cart-btn" onclick="openCart()" aria-label="Open cart">
+        &#128722;
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+      <button class="btn btn-dark" id="authNavBtn" onclick="handleAuthNavClick()">Login / Register</button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============================= HOME VIEW ============================= -->
+  <section class="view active" id="view-home" data-view="home">
+
+    <div class="hero" id="home">
+      <div class="container hero-inner">
+        <div>
+          <span class="hero-badge">&#127793; Natural Farming &bull; Revalle Village, Karimnagar</span>
+          <h1>Fresh, Pure Milk <span>Delivered to Every Doorstep</span>, for a Healthier Family</h1>
+          <p>From our farm gate in Revalle village, Karimnagar district, Telangana, straight to your kitchen table. No preservatives. No chemicals. Just wholesome, natural dairy the way it should be &mdash; because purity is our priority.</p>
+          <div class="hero-actions">
+            <button class="btn btn-primary" onclick="showView('shop')">Shop Fresh Dairy</button>
+            <button class="btn btn-outline" onclick="showView('tours')" style="color:var(--cream); border-color: rgba(255,255,255,0.6);">Book a Farm Tour</button>
+          </div>
+          <div class="hero-stats">
+            <div class="hero-stat"><strong>100%</strong><span>Natural, No Chemicals</span></div>
+            <div class="hero-stat"><strong>153+</strong><span>Happy Families Served</span></div>
+            <div class="hero-stat"><strong>Daily</strong><span>Karimnagar Home Delivery</span></div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <img src="assets/logo.jpg" alt="Swach Farm" class="hero-visual-logo" />
+          <h3>Swach Farm</h3>
+          <p>Purity is our priority &#128522; &bull; Natural Farming &bull; #healthfirst &#127860;</p>
+          <div class="hero-visual-tags">
+            <span class="tag-pill">Cream-Top Milk</span>
+            <span class="tag-pill">Pure Desi Ghee</span>
+            <span class="tag-pill">Fresh Paneer</span>
+            <span class="tag-pill">Farm Tours</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================= ABOUT ============================= -->
+    <section class="page-section" id="about">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-tag">Our Story</span>
+          <h2>Rooted in Revalle Village, Karimnagar</h2>
+          <p>A small family farm with a simple promise: milk exactly as nature intended, delivered with care to every family in the region.</p>
+        </div>
+        <div class="about-grid">
+          <div class="about-image">
+            <img src="assets/logo.jpg" alt="Swach Farm cattle" />
+            <h4>Swach Farm</h4>
+            <p>Village of Revalle, Karimnagar District, Telangana, India</p>
+          </div>
+          <div class="about-text">
+            <p>Swach Farm began with a single goal &mdash; to bring truly pure, unadulterated milk back into everyday life. Our herd grazes freely on natural pasture in Revalle village, and every drop of milk we sell is free from preservatives, chemicals, and synthetic additives.</p>
+            <p>We believe fresh milk is more than a product &mdash; it is the foundation of a healthy family. That is why we deliver daily around Karimnagar and welcome pickup straight from our farm gate, so you always know exactly where your milk comes from.</p>
+            <div class="about-points">
+              <div class="about-point"><strong>&#127807; Zero Preservatives</strong><span>Nothing artificial, ever added to our milk, ghee or paneer.</span></div>
+              <div class="about-point"><strong>&#128204; Karimnagar Delivery</strong><span>Fresh milk delivered daily to doorsteps across Karimnagar.</span></div>
+              <div class="about-point"><strong>&#128147; Health First</strong><span>Every product made with family health as the top priority.</span></div>
+              <div class="about-point"><strong>&#127805; Natural Farming</strong><span>Cattle raised on open pasture with natural, chemical-free feed.</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================= FARM GALLERY ============================= -->
+    <section class="page-section alt" id="gallery">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-tag">Farm Gallery</span>
+          <h2>See Swach Farm for Yourself</h2>
+          <p>A real look at daily life on our farm in Revalle village &mdash; the herd, the pastures and how your milk, ghee and paneer are made.</p>
+        </div>
+
+        <div class="carousel-wrapper" id="farmCarousel">
+          <div class="carousel-track" id="carouselTrack">
+            <div class="carousel-slide" style="background-image: url('assets/gallery/farm-1.jpg'), linear-gradient(135deg, #1c4a34, #0f2e20);">
+              <div class="carousel-caption"><span class="cap-icon">&#128004;</span><div><strong>Our Herd at Pasture</strong><span>Revalle Village, Karimnagar</span></div></div>
+            </div>
+            <div class="carousel-slide" style="background-image: url('assets/gallery/farm-2.jpg'), linear-gradient(135deg, #2d6b4a, #123524);">
+              <div class="carousel-caption"><span class="cap-icon">&#129371;</span><div><strong>Fresh Morning Milking</strong><span>Collected daily, chilled the same hour</span></div></div>
+            </div>
+            <div class="carousel-slide" style="background-image: url('assets/gallery/farm-3.jpg'), linear-gradient(135deg, #a87c26, #6b4e18);">
+              <div class="carousel-caption"><span class="cap-icon">&#127806;</span><div><strong>Open Natural Pastures</strong><span>Where our cattle graze freely, chemical-free</span></div></div>
+            </div>
+            <div class="carousel-slide" style="background-image: url('assets/gallery/farm-4.jpg'), linear-gradient(135deg, #c99a3d, #a87c26);">
+              <div class="carousel-caption"><span class="cap-icon">&#129753;</span><div><strong>Traditional Ghee Making</strong><span>Slow-churned using the bilona method</span></div></div>
+            </div>
+            <div class="carousel-slide" style="background-image: url('assets/gallery/farm-5.jpg'), linear-gradient(135deg, #e6c688, #c99a3d);">
+              <div class="carousel-caption"><span class="cap-icon">&#129472;</span><div><strong>Fresh Paneer, Made Daily</strong><span>Soft, spongy and completely preservative-free</span></div></div>
+            </div>
+            <div class="carousel-slide" style="background-image: url('assets/gallery/farm-6.jpg'), linear-gradient(135deg, #1c4a34, #2d6b4a);">
+              <div class="carousel-caption"><span class="cap-icon">&#128119;</span><div><strong>Life at Swach Farm</strong><span>For Better Tomorrow</span></div></div>
+            </div>
+          </div>
+
+          <button type="button" class="carousel-arrow prev" onclick="carouselPrev()" aria-label="Previous photo">&#10094;</button>
+          <button type="button" class="carousel-arrow next" onclick="carouselNext()" aria-label="Next photo">&#10095;</button>
+
+          <div class="carousel-dots" id="carouselDots"></div>
+        </div>
+        <p class="gallery-hint">&#128247; Farm owner tip: drop your own photos into <code>public/assets/gallery/</code> named <code>farm-1.jpg</code> through <code>farm-6.jpg</code> and they'll appear here automatically.</p>
+      </div>
+    </section>
+
+    <!-- ============================= DELIVERY STRIP ============================= -->
+    <section class="page-section alt">
+      <div class="container">
+        <div class="delivery-strip">
+          <div>
+            <span class="hero-badge" style="background:rgba(255,255,255,0.12); border-color:rgba(255,255,255,0.25);">&#128666; Doorstep Delivery Service</span>
+            <h3>We Deliver Fresh Milk Around Karimnagar, Every Single Day</h3>
+            <p>Can't make it to the farm? No problem. Our doorstep delivery service brings the same farm-fresh milk, cheese and butter to homes across Karimnagar town and surrounding areas &mdash; chilled, timely and reliable.</p>
+            <ul class="delivery-list">
+              <li>&#9989; <b>Daily doorstep delivery</b> across Karimnagar and nearby villages</li>
+              <li>&#9989; <b>Early morning slots</b> so your milk arrives fresh, before breakfast</li>
+              <li>&#9989; <b>Subscription friendly</b> &mdash; ask us about daily or weekly delivery plans</li>
+            </ul>
+            <button class="btn btn-primary" style="margin-top:18px;" onclick="showView('shop')">Order for Delivery</button>
+          </div>
+          <div class="delivery-card">
+            <h4>How Delivery Works</h4>
+            <ul>
+              <li>1. Choose your products in the Farm Shop</li>
+              <li>2. Select "Home Delivery" at checkout</li>
+              <li>3. Share your Karimnagar address &amp; contact number</li>
+              <li>4. We deliver fresh to your doorstep, on schedule</li>
+              <li>5. Or call us directly at 9032858342 to set up a subscription</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================= FAQ ============================= -->
+    <section class="page-section" id="faq">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-tag">Good to Know</span>
+          <h2>Frequently Asked Questions</h2>
+          <p>Everything you need to know about our milk, pickup, delivery and farm tours.</p>
+        </div>
+        <div class="faq-list" id="faqList">
+          <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">Is your milk really free of preservatives and chemicals?<span class="icon">+</span></button>
+            <div class="faq-answer"><p>Yes, always. Every liter of Swach Farm milk comes straight from naturally raised cattle with no preservatives, additives or chemicals of any kind &mdash; just pure, wholesome milk the way nature made it.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">Is the milk pure and unadulterated - no water or synthetic mixing?<span class="icon">+</span></button>
+            <div class="faq-answer"><p>100% guaranteed. Every batch comes directly from our own herd in Revalle village with absolutely no water mixing, no synthetic milk and no adulteration of any kind &mdash; what leaves our farm is exactly what reaches your doorstep.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">What is the price of your milk?<span class="icon">+</span></button>
+            <div class="faq-answer"><p>Our Cream-Top Whole Milk is priced at &#8377;90 per liter, with our pure desi cow ghee and fresh paneer priced separately in the Farm Shop. Fair, transparent pricing for farm-fresh quality.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">Do you deliver to homes, or is it pickup only?<span class="icon">+</span></button>
+            <div class="faq-answer"><p>Both! You can collect your order directly from our farm in Revalle village, or choose our daily doorstep delivery service available across Karimnagar town and nearby areas.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">How fresh is the milk when it reaches me?<span class="icon">+</span></button>
+            <div class="faq-answer"><p>Our milk is collected, chilled and dispatched the same day &mdash; whether you pick it up at the farm or it is delivered to your doorstep in Karimnagar.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">Can I visit the farm with my family?<span class="icon">+</span></button>
+            <div class="faq-answer"><p>Absolutely. Use our Book Tours page to reserve a date, time slot and guest count (up to 15 guests) for a guided visit around Swach Farm in Revalle village.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">Do I need an account to place an order?<span class="icon">+</span></button>
+            <div class="faq-answer"><p>No account is required to place an order or book a tour, but creating a free account lets you earn loyalty points, track your order history and get faster checkout next time.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================= CONTACT ============================= -->
+    <section class="page-section alt" id="contact">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-tag">Get In Touch</span>
+          <h2>Contact Swach Farm</h2>
+          <p>Questions about delivery, pickup or bulk orders? Send us a message and our team will get back to you.</p>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-info">
+            <h3>Reach Us Directly</h3>
+            <p>We're happy to help with orders, delivery schedules and farm visits.</p>
+            <div class="contact-row">
+              <div class="ci-icon">&#128205;</div>
+              <div><strong>Farm Location</strong><span>Revalle Village, Karimnagar District, Telangana, India</span></div>
+            </div>
+            <div class="contact-row">
+              <div class="ci-icon">&#128222;</div>
+              <div><strong>Farm Contact</strong><span>9032858342</span></div>
+            </div>
+            <div class="contact-row">
+              <div class="ci-icon">&#128100;</div>
+              <div><strong>Owners</strong><span>9494849852 &bull; 9000603843 &bull; 9494499771</span></div>
+            </div>
+            <div class="contact-row">
+              <div class="ci-icon">&#128247;</div>
+              <div><strong>Instagram</strong><a href="https://www.instagram.com/swachfarm" target="_blank" rel="noopener">@swachfarm</a></div>
+            </div>
+            <div class="social-row">
+              <a href="https://www.instagram.com/swachfarm" target="_blank" rel="noopener" aria-label="Instagram">&#128247;</a>
+              <a href="tel:9032858342" aria-label="Call">&#128222;</a>
+            </div>
+          </div>
+
+          <div class="contact-form-card">
+            <form id="contactForm" onsubmit="handleContactSubmit(event)">
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="contactName">Name</label>
+                  <input type="text" id="contactName" required placeholder="Your full name" />
+                </div>
+                <div class="form-group">
+                  <label for="contactEmail">Email</label>
+                  <input type="email" id="contactEmail" required placeholder="you@example.com" />
+                </div>
+                <div class="form-group">
+                  <label for="contactAddress">Address</label>
+                  <input type="text" id="contactAddress" required placeholder="Your delivery / pickup address" />
+                </div>
+                <div class="form-group">
+                  <label for="contactPhone">Phone</label>
+                  <input type="tel" id="contactPhone" required placeholder="10-digit mobile number" />
+                </div>
+                <div class="form-group full">
+                  <label for="contactService">Choose Service</label>
+                  <select id="contactService" required>
+                    <option value="" disabled selected>Choose Service</option>
+                    <option value="Farm Shop Order (Pickup)">Farm Shop Order (Pickup)</option>
+                    <option value="Home Milk Delivery (Karimnagar)">Home Milk Delivery (Karimnagar)</option>
+                    <option value="Farm Tour Booking">Farm Tour Booking</option>
+                    <option value="Bulk / Wholesale Order">Bulk / Wholesale Order</option>
+                    <option value="General Inquiry">General Inquiry</option>
+                  </select>
+                </div>
+                <div class="form-group full">
+                  <label for="contactMessage">Message (optional)</label>
+                  <textarea id="contactMessage" placeholder="Tell us a little more..."></textarea>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary btn-block">Send Request</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </section>
+
+  <!-- ============================= SHOP VIEW ============================= -->
+  <section class="view" id="view-shop" data-view="shop">
+    <section class="page-section" style="padding-top:60px;">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-tag">Farm Shop</span>
+          <h2>Fresh From the Farm, Straight to You</h2>
+          <p>Choose your favorites below. Every item is prepared fresh with no preservatives or chemicals, ready for farm pickup or doorstep delivery around Karimnagar.</p>
+        </div>
+
+        <div class="products-grid">
+          <div class="product-card">
+            <div class="product-media milk"><span class="product-badge">Best Seller</span>&#129371;</div>
+            <div class="product-body">
+              <h3>Cream-Top Whole Milk</h3>
+              <p>100% pure, unadulterated cow milk &mdash; no water mixing, no synthetic milk, no preservatives. Collected fresh every morning from our own pasture-raised cattle in Revalle village, chilled and hygienically packed for same-day doorstep delivery.</p>
+              <div class="product-footer">
+                <div class="product-price">&#8377;90 <span>/ liter</span></div>
+                <button class="add-cart-btn" onclick="addToCart('milk', this)">+ Add to Order</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-media ghee"><span class="product-badge">Bilona Method</span>&#129753;</div>
+            <div class="product-body">
+              <h3>Pure Desi Cow Ghee</h3>
+              <p>Traditionally hand-churned using the age-old bilona method, slow-cooked in small batches from fresh cultured cream. Rich, aromatic and completely free of preservatives or chemicals &mdash; the way your grandmother made it.</p>
+              <div class="product-footer">
+                <div class="product-price">&#8377;650 <span>/ 500g</span></div>
+                <button class="add-cart-btn" onclick="addToCart('ghee', this)">+ Add to Order</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-media paneer"><span class="product-badge">Made Fresh Daily</span>&#129472;</div>
+            <div class="product-body">
+              <h3>Farm-Fresh Paneer</h3>
+              <p>Soft, spongy paneer made fresh every morning from our own unadulterated cow milk. No preservatives, no chemicals &mdash; just pure, protein-rich paneer ready for your kitchen the same day it's made.</p>
+              <div class="product-footer">
+                <div class="product-price">&#8377;280 <span>/ 250g</span></div>
+                <button class="add-cart-btn" onclick="addToCart('paneer', this)">+ Add to Order</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="shop-note">
+          <span>&#128666;</span>
+          <span><strong>Two ways to get your order:</strong> collect fresh from our farm gate in Revalle village (Farm Pickup), or have it delivered straight to your doorstep anywhere across Karimnagar (Home Delivery). Choose your preferred option in the cart.</span>
+        </div>
+      </div>
+    </section>
+  </section>
+
+  <!-- ============================= TOURS VIEW ============================= -->
+  <section class="view" id="view-tours" data-view="tours">
+    <section class="page-section" style="padding-top:60px;">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-tag">Agritourism</span>
+          <h2>Book a Farm Tour</h2>
+          <p>Walk the pastures, meet our cattle and see exactly how your milk is made &mdash; a wholesome day out for the whole family.</p>
+        </div>
+
+        <div class="tours-wrapper">
+          <div class="tour-highlights">
+            <div class="tour-highlight-card">
+              <div class="tour-highlight-icon">&#128004;</div>
+              <div><h4>Meet the Herd</h4><p>Get up close with our naturally raised, pasture-fed dairy cattle in Revalle village.</p></div>
+            </div>
+            <div class="tour-highlight-card">
+              <div class="tour-highlight-icon">&#129371;</div>
+              <div><h4>Milking &amp; Dairy Walkthrough</h4><p>See how we milk, chill and prepare our cream-top milk, cheese and butter, chemical-free.</p></div>
+            </div>
+            <div class="tour-highlight-card">
+              <div class="tour-highlight-icon">&#127793;</div>
+              <div><h4>Pasture Walk</h4><p>Stroll the open natural pastures where our cattle graze freely, chemical and preservative free.</p></div>
+            </div>
+            <div class="tour-highlight-card">
+              <div class="tour-highlight-icon">&#128721;</div>
+              <div><h4>Guests Capped at 15</h4><p>We keep every tour small and personal, with a maximum of 15 guests per group.</p></div>
+            </div>
+          </div>
+
+          <div class="tour-form-card">
+            <form id="tourForm" onsubmit="handleTourSubmit(event)">
+              <div class="form-group">
+                <label for="tourName">Full Name</label>
+                <input type="text" id="tourName" required placeholder="Your full name" />
+              </div>
+              <div class="form-group">
+                <label for="tourPhone">Phone Number</label>
+                <input type="tel" id="tourPhone" required placeholder="10-digit mobile number" />
+              </div>
+              <div class="form-group">
+                <label for="tourDate">Preferred Date</label>
+                <input type="date" id="tourDate" required />
+              </div>
+              <div class="form-group">
+                <label for="tourGuests">Number of Guests (max 15)</label>
+                <input type="number" id="tourGuests" min="1" max="15" value="2" required />
+              </div>
+              <div class="form-group">
+                <label>Time Slot</label>
+                <div class="slot-options" id="slotOptions">
+                  <div class="slot-option" data-slot="Morning (9:00 AM - 11:00 AM)" onclick="selectSlot(this)">Morning<br />9-11 AM</div>
+                  <div class="slot-option" data-slot="Afternoon (12:00 PM - 2:00 PM)" onclick="selectSlot(this)">Afternoon<br />12-2 PM</div>
+                  <div class="slot-option" data-slot="Evening (4:00 PM - 6:00 PM)" onclick="selectSlot(this)">Evening<br />4-6 PM</div>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary btn-block" style="margin-top:10px;">Book My Farm Tour</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </section>
+
+  <!-- ============================= DASHBOARD VIEW ============================= -->
+  <section class="view" id="view-dashboard" data-view="dashboard">
+    <section class="page-section" style="padding-top:60px;">
+      <div class="container" id="dashboardContainer">
+        <div class="dash-loading">Loading your dashboard...</div>
+      </div>
+    </section>
+  </section>
+
+</main>
+
+<!-- ============================= FOOTER ============================= -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <img src="assets/logo.jpg" alt="Swach Farm" />
+          <strong>Swach Farm</strong>
+        </div>
+        <p style="font-size:0.88rem; max-width:280px;">Fresh, pure milk delivered from our natural farm in Revalle village, Karimnagar district, Telangana &mdash; straight to every doorstep, for a healthier tomorrow.</p>
+        <div class="social-row">
+          <a href="https://www.instagram.com/swachfarm" target="_blank" rel="noopener" aria-label="Instagram">&#128247;</a>
+          <a href="tel:9032858342" aria-label="Call">&#128222;</a>
+        </div>
+      </div>
+      <div>
+        <h5>Explore</h5>
+        <ul>
+          <li><a href="#" onclick="showView('home', event)">Home</a></li>
+          <li><a href="#about" onclick="gotoSection(event,'about')">About</a></li>
+          <li><a href="#" onclick="showView('shop', event)">Farm Shop</a></li>
+          <li><a href="#" onclick="showView('tours', event)">Book Tours</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Support</h5>
+        <ul>
+          <li><a href="#faq" onclick="gotoSection(event,'faq')">FAQ</a></li>
+          <li><a href="#contact" onclick="gotoSection(event,'contact')">Contact Us</a></li>
+          <li><a href="#" onclick="showView('shop', event)">Home Delivery</a></li>
+          <li><a href="#" onclick="handleAuthNavClick(event)">My Dashboard</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <ul>
+          <li>Revalle Village, Karimnagar, Telangana</li>
+          <li>Farm: 9032858342</li>
+          <li>Owners: 9494849852 / 9000603843 / 9494499771</li>
+          <li>#healthfirst &#127860;</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span id="footerYear"></span> Swach Farm. All rights reserved.</span>
+      <span>Purity is our priority &bull; Natural Farming &bull; #karimnagar</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================= CART DRAWER ============================= -->
+<div id="cart-overlay" onclick="closeCart()"></div>
+<aside id="cart-drawer">
+  <div class="cart-header">
+    <h3>Your Pickup Order</h3>
+    <button class="cart-close" onclick="closeCart()">&times;</button>
+  </div>
+  <div class="cart-body" id="cartBody">
+    <div class="cart-empty">Your cart is empty. Add some fresh dairy from the Farm Shop!</div>
+  </div>
+  <div class="cart-footer" id="cartFooter" style="display:none;">
+    <div class="fulfillment-toggle">
+      <button type="button" id="fulfillPickupBtn" class="active" onclick="setFulfillment('pickup')">&#127978; Farm Pickup</button>
+      <button type="button" id="fulfillDeliveryBtn" onclick="setFulfillment('delivery')">&#128666; Home Delivery</button>
+    </div>
+    <div class="fulfillment-note" id="fulfillmentNote">
+      <span>&#8505;</span>
+      <span>Farm Pickup Only for this order &mdash; collect fresh from our farm gate in Revalle village, Karimnagar.</span>
+    </div>
+    <div class="cart-total-row">
+      <span>Total</span>
+      <span id="cartTotal">&#8377;0</span>
+    </div>
+    <button class="btn btn-primary btn-block" onclick="processOrder()">Process Pickup Order</button>
+  </div>
+</aside>
+
+<!-- ============================= AUTH MODAL ============================= -->
+<div id="auth-modal-overlay">
+  <div id="auth-modal">
+    <button class="modal-close" onclick="closeAuthModal()">&times;</button>
+    <div class="auth-tabs">
+      <button id="tabLoginBtn" class="active" onclick="switchAuthTab('login')">Sign In</button>
+      <button id="tabRegisterBtn" onclick="switchAuthTab('register')">Create Account</button>
+    </div>
+
+    <form id="loginForm" class="auth-form active" onsubmit="handleLogin(event)">
+      <h3>Welcome Back</h3>
+      <p class="sub">Sign in to track orders, tours and loyalty points.</p>
+      <div class="auth-error" id="loginError"></div>
+      <div class="form-group">
+        <label for="loginEmail">Email</label>
+        <input type="email" id="loginEmail" required placeholder="you@example.com" />
+      </div>
+      <div class="form-group">
+        <label for="loginPassword">Password</label>
+        <input type="password" id="loginPassword" required placeholder="Your password" />
+      </div>
+      <button type="submit" class="btn btn-primary btn-block" id="loginSubmitBtn">Sign In</button>
+    </form>
+
+    <form id="registerForm" class="auth-form" onsubmit="handleRegister(event)">
+      <h3>Join Swach Farm</h3>
+      <p class="sub">Create a free account to earn loyalty points on every order.</p>
+      <div class="auth-error" id="registerError"></div>
+      <div class="form-group">
+        <label for="registerName">Full Name</label>
+        <input type="text" id="registerName" required placeholder="Your full name" />
+      </div>
+      <div class="form-group">
+        <label for="registerEmail">Email</label>
+        <input type="email" id="registerEmail" required placeholder="you@example.com" />
+      </div>
+      <div class="form-group">
+        <label for="registerPassword">Password</label>
+        <input type="password" id="registerPassword" required placeholder="At least 6 characters" minlength="6" />
+      </div>
+      <button type="submit" class="btn btn-primary btn-block" id="registerSubmitBtn">Create Account</button>
+    </form>
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  // =======================================================================
+  // Constants & State
+  // =======================================================================
+  var API_BASE = '/api';
+
+  var PRODUCTS = {
+    milk:   { name: 'Cream-Top Whole Milk',  price: 90,  unit: 'liter', icon: '🥛' },
+    ghee:   { name: 'Pure Desi Cow Ghee',    price: 650, unit: '500g',  icon: '🫙' },
+    paneer: { name: 'Farm-Fresh Paneer',     price: 280, unit: '250g',  icon: '🧀' }
+  };
+
+  var CURRENCY = '₹';
+
+  var state = {
+    cart: {},              // { productId: quantity }
+    fulfillment: 'pickup',
+    token: null,
+    user: null,
+    selectedSlot: null,
+    currentView: 'home'
+  };
+
+  // =======================================================================
+  // Init
+  // =======================================================================
+  document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('footerYear').textContent = new Date().getFullYear();
+
+    try {
+      var savedToken = localStorage.getItem('swachfarm_token');
+      var savedUser = localStorage.getItem('swachfarm_user');
+      var savedCart = localStorage.getItem('swachfarm_cart');
+      if (savedToken) state.token = savedToken;
+      if (savedUser) state.user = JSON.parse(savedUser);
+      if (savedCart) state.cart = JSON.parse(savedCart);
+    } catch (e) {
+      console.warn('Could not read saved state from localStorage.', e);
+    }
+
+    var minDate = new Date();
+    minDate.setDate(minDate.getDate() + 1);
+    var tourDateInput = document.getElementById('tourDate');
+    if (tourDateInput) tourDateInput.min = minDate.toISOString().split('T')[0];
+
+    updateAuthNavButton();
+    updateCartUI();
+    initCarousel();
+  });
+
+  // =======================================================================
+  // Farm Gallery Carousel
+  // =======================================================================
+  var carousel = {
+    index: 0,
+    slideCount: 0,
+    autoplayTimer: null,
+    autoplayDelay: 4500
+  };
+
+  function initCarousel() {
+    var track = document.getElementById('carouselTrack');
+    var dotsContainer = document.getElementById('carouselDots');
+    var wrapper = document.getElementById('farmCarousel');
+    if (!track || !dotsContainer || !wrapper) return;
+
+    var slides = track.querySelectorAll('.carousel-slide');
+    carousel.slideCount = slides.length;
+    if (carousel.slideCount === 0) return;
+
+    dotsContainer.innerHTML = '';
+    for (var i = 0; i < carousel.slideCount; i++) {
+      var dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', 'Go to photo ' + (i + 1));
+      dot.addEventListener('click', (function (slideIndex) {
+        return function () { carouselGoTo(slideIndex); };
+      })(i));
+      dotsContainer.appendChild(dot);
+    }
+
+    carouselRender();
+    startCarouselAutoplay();
+
+    wrapper.addEventListener('mouseenter', stopCarouselAutoplay);
+    wrapper.addEventListener('mouseleave', startCarouselAutoplay);
+
+    var touchStartX = 0;
+    wrapper.addEventListener('touchstart', function (e) {
+      touchStartX = e.changedTouches[0].screenX;
+      stopCarouselAutoplay();
+    }, { passive: true });
+    wrapper.addEventListener('touchend', function (e) {
+      var touchEndX = e.changedTouches[0].screenX;
+      var diff = touchStartX - touchEndX;
+      if (Math.abs(diff) > 40) {
+        if (diff > 0) carouselNext();
+        else carouselPrev();
+      }
+      startCarouselAutoplay();
+    }, { passive: true });
+  }
+
+  function carouselRender() {
+    var track = document.getElementById('carouselTrack');
+    var dots = document.querySelectorAll('.carousel-dot');
+    if (!track) return;
+    track.style.transform = 'translateX(-' + (carousel.index * 100) + '%)';
+    dots.forEach(function (dot, i) {
+      dot.classList.toggle('active', i === carousel.index);
+    });
+  }
+
+  window.carouselNext = function () {
+    carousel.index = (carousel.index + 1) % carousel.slideCount;
+    carouselRender();
+  };
+  window.carouselPrev = function () {
+    carousel.index = (carousel.index - 1 + carousel.slideCount) % carousel.slideCount;
+    carouselRender();
+  };
+  window.carouselGoTo = function (i) {
+    carousel.index = i;
+    carouselRender();
+  };
+
+  function startCarouselAutoplay() {
+    stopCarouselAutoplay();
+    carousel.autoplayTimer = setInterval(function () {
+      carouselNext();
+    }, carousel.autoplayDelay);
+  }
+  function stopCarouselAutoplay() {
+    if (carousel.autoplayTimer) {
+      clearInterval(carousel.autoplayTimer);
+      carousel.autoplayTimer = null;
+    }
+  }
+
+  // =======================================================================
+  // Toasts
+  // =======================================================================
+  function showToast(message, type) {
+    var container = document.getElementById('toast-container');
+    var toast = document.createElement('div');
+    toast.className = 'toast' + (type ? ' ' + type : '');
+    toast.innerHTML = '<span>' + message + '</span>';
+    container.appendChild(toast);
+    setTimeout(function () {
+      toast.style.opacity = '0';
+      toast.style.transition = 'opacity 0.3s ease';
+      setTimeout(function () { toast.remove(); }, 300);
+    }, 4200);
+  }
+
+  // =======================================================================
+  // Router: view switching
+  // =======================================================================
+  window.showView = function (viewName, evt) {
+    if (evt) evt.preventDefault();
+
+    if (viewName === 'dashboard' && !state.token) {
+      openAuthModal('login');
+      showToast('Please sign in to view your dashboard.', 'warn');
+      return;
+    }
+
+    document.querySelectorAll('.view').forEach(function (el) {
+      el.classList.remove('active');
+    });
+    var target = document.getElementById('view-' + viewName);
+    if (target) target.classList.add('active');
+
+    document.querySelectorAll('.nav-links a[data-view]').forEach(function (link) {
+      link.classList.toggle('active', link.getAttribute('data-view') === viewName);
+    });
+
+    state.currentView = viewName;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    closeMobileNav();
+
+    if (viewName === 'dashboard') {
+      loadDashboard();
+    }
+  };
+
+  window.goHome = function (evt) {
+    if (evt) evt.preventDefault();
+    showView('home');
+  };
+
+  window.gotoSection = function (evt, sectionId) {
+    if (evt) evt.preventDefault();
+    showView('home');
+    setTimeout(function () {
+      var el = document.getElementById(sectionId);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 60);
+    closeMobileNav();
+  };
+
+  window.toggleMobileNav = function () {
+    document.getElementById('navLinks').classList.toggle('mobile-open');
+  };
+
+  function closeMobileNav() {
+    document.getElementById('navLinks').classList.remove('mobile-open');
+  }
+
+  // =======================================================================
+  // FAQ accordion
+  // =======================================================================
+  window.toggleFaq = function (btn) {
+    var item = btn.closest('.faq-item');
+    var wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(function (el) {
+      el.classList.remove('open');
+    });
+    if (!wasOpen) item.classList.add('open');
+  };
+
+  // =======================================================================
+  // Cart logic
+  // =======================================================================
+  function persistCart() {
+    try {
+      localStorage.setItem('swachfarm_cart', JSON.stringify(state.cart));
+    } catch (e) { /* ignore quota errors */ }
+  }
+
+  window.addToCart = function (productId, btnEl) {
+    state.cart[productId] = (state.cart[productId] || 0) + 1;
+    persistCart();
+    updateCartUI();
+
+    if (btnEl) {
+      var originalText = btnEl.textContent;
+      btnEl.textContent = '✓ Added';
+      btnEl.classList.add('added');
+      setTimeout(function () {
+        btnEl.textContent = originalText;
+        btnEl.classList.remove('added');
+      }, 1200);
+    }
+  };
+
+  function changeQty(productId, delta) {
+    var next = (state.cart[productId] || 0) + delta;
+    if (next <= 0) {
+      delete state.cart[productId];
+    } else {
+      state.cart[productId] = next;
+    }
+    persistCart();
+    updateCartUI();
+  }
+  window.increaseQty = function (id) { changeQty(id, 1); };
+  window.decreaseQty = function (id) { changeQty(id, -1); };
+  window.removeFromCart = function (id) {
+    delete state.cart[id];
+    persistCart();
+    updateCartUI();
+  };
+
+  function getCartCount() {
+    return Object.keys(state.cart).reduce(function (sum, id) {
+      return sum + state.cart[id];
+    }, 0);
+  }
+
+  function getCartTotal() {
+    return Object.keys(state.cart).reduce(function (sum, id) {
+      var product = PRODUCTS[id];
+      if (!product) return sum;
+      return sum + product.price * state.cart[id];
+    }, 0);
+  }
+
+  function updateCartUI() {
+    var count = getCartCount();
+    document.getElementById('cartCount').textContent = count;
+
+    var body = document.getElementById('cartBody');
+    var footer = document.getElementById('cartFooter');
+    var ids = Object.keys(state.cart);
+
+    if (ids.length === 0) {
+      body.innerHTML = '<div class="cart-empty">Your cart is empty. Add some fresh dairy from the Farm Shop!</div>';
+      footer.style.display = 'none';
+      return;
+    }
+
+    footer.style.display = 'block';
+    var html = '';
+    ids.forEach(function (id) {
+      var product = PRODUCTS[id];
+      if (!product) return;
+      var qty = state.cart[id];
+      html += '' +
+        '<div class="cart-item">' +
+          '<div class="cart-item-icon">' + product.icon + '</div>' +
+          '<div class="cart-item-info">' +
+            '<strong>' + product.name + '</strong>' +
+            '<span>' + CURRENCY + product.price + ' / ' + product.unit + '</span>' +
+            '<div class="cart-remove" onclick="removeFromCart(\'' + id + '\')">Remove</div>' +
+          '</div>' +
+          '<div class="cart-qty">' +
+            '<button type="button" class="qty-btn" onclick="decreaseQty(\'' + id + '\')">&minus;</button>' +
+            '<span>' + qty + '</span>' +
+            '<button type="button" class="qty-btn" onclick="increaseQty(\'' + id + '\')">+</button>' +
+          '</div>' +
+        '</div>';
+    });
+    body.innerHTML = html;
+
+    document.getElementById('cartTotal').textContent = CURRENCY + getCartTotal();
+  }
+
+  window.setFulfillment = function (mode) {
+    state.fulfillment = mode;
+    var pickupBtn = document.getElementById('fulfillPickupBtn');
+    var deliveryBtn = document.getElementById('fulfillDeliveryBtn');
+    var note = document.getElementById('fulfillmentNote');
+    var processBtn = document.querySelector('#cart-drawer .cart-footer .btn-primary');
+
+    if (mode === 'pickup') {
+      pickupBtn.classList.add('active');
+      deliveryBtn.classList.remove('active');
+      note.innerHTML = '<span>ℹ</span><span>Farm Pickup Only for this order &mdash; collect fresh from our farm gate in Revalle village, Karimnagar.</span>';
+      if (processBtn) processBtn.textContent = 'Process Pickup Order';
+    } else {
+      deliveryBtn.classList.add('active');
+      pickupBtn.classList.remove('active');
+      note.innerHTML = '<span>🚚</span><span>Home Delivery selected &mdash; we deliver fresh daily across Karimnagar town and nearby villages. Our team will confirm delivery timing and any applicable charges.</span>';
+      if (processBtn) processBtn.textContent = 'Process Delivery Order';
+    }
+  };
+
+  window.openCart = function () {
+    document.getElementById('cart-overlay').classList.add('open');
+    document.getElementById('cart-drawer').classList.add('open');
+  };
+  window.closeCart = function () {
+    document.getElementById('cart-overlay').classList.remove('open');
+    document.getElementById('cart-drawer').classList.remove('open');
+  };
+
+  window.processOrder = async function () {
+    var ids = Object.keys(state.cart);
+    if (ids.length === 0) {
+      showToast('Your cart is empty. Add a product first.', 'warn');
+      return;
+    }
+
+    var itemsDescription = ids.map(function (id) {
+      var product = PRODUCTS[id];
+      return state.cart[id] + 'x ' + product.name;
+    }).join(', ');
+
+    var fulfillmentLabel = state.fulfillment === 'pickup'
+      ? 'Farm Pickup (Revalle Village)'
+      : 'Home Delivery (Karimnagar)';
+
+    var fullDescription = itemsDescription + ' | Fulfillment: ' + fulfillmentLabel + ' | Total: ' + CURRENCY + getCartTotal();
+
+    if (!state.token) {
+      showToast(
+        'Order confirmed as a guest: ' + itemsDescription + ' via ' + fulfillmentLabel + '. Create a free account next time to earn loyalty points!',
+        'success'
+      );
+      state.cart = {};
+      persistCart();
+      updateCartUI();
+      closeCart();
+      return;
+    }
+
+    var btn = document.querySelector('#cart-drawer .cart-footer .btn-primary');
+    var originalLabel = btn ? btn.textContent : '';
+    if (btn) { btn.disabled = true; btn.textContent = 'Processing...'; }
+
+    try {
+      var res = await fetch(API_BASE + '/action', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + state.token
+        },
+        body: JSON.stringify({ type: 'shop', description: fullDescription })
+      });
+
+      var data = await res.json();
+
+      if (res.ok && data.success) {
+        showToast(data.message + ' You earned +' + data.pointsEarned + ' loyalty points.', 'success');
+        if (data.user) {
+          state.user = data.user;
+          localStorage.setItem('swachfarm_user', JSON.stringify(state.user));
+        }
+      } else {
+        showToast(data.message || 'Could not reach the farm server right now, but your order request has been noted locally.', 'warn');
+      }
+    } catch (err) {
+      showToast(
+        'Our live server connection isn\'t available yet (demo mode). Your order details were: ' + itemsDescription + ' via ' + fulfillmentLabel + '.',
+        'warn'
+      );
+    } finally {
+      if (btn) { btn.disabled = false; btn.textContent = originalLabel; }
+      state.cart = {};
+      persistCart();
+      updateCartUI();
+      closeCart();
+    }
+  };
+
+  // =======================================================================
+  // Tour booking
+  // =======================================================================
+  window.selectSlot = function (el) {
+    document.querySelectorAll('.slot-option').forEach(function (opt) {
+      opt.classList.remove('selected');
+    });
+    el.classList.add('selected');
+    state.selectedSlot = el.getAttribute('data-slot');
+  };
+
+  window.handleTourSubmit = async function (evt) {
+    evt.preventDefault();
+
+    var name = document.getElementById('tourName').value.trim();
+    var phone = document.getElementById('tourPhone').value.trim();
+    var date = document.getElementById('tourDate').value;
+    var guests = parseInt(document.getElementById('tourGuests').value, 10);
+
+    if (!name || !phone || !date) {
+      showToast('Please fill in all required fields.', 'error');
+      return;
+    }
+    if (!guests || guests < 1 || guests > 15) {
+      showToast('Guest count must be between 1 and 15.', 'error');
+      return;
+    }
+    if (!state.selectedSlot) {
+      showToast('Please choose a preferred time slot.', 'error');
+      return;
+    }
+
+    var description = name + ' (' + phone + ') for ' + guests + ' guest(s) on ' + date + ', slot: ' + state.selectedSlot;
+
+    var submitBtn = evt.target.querySelector('button[type="submit"]');
+    var originalLabel = submitBtn.textContent;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Booking...';
+
+    if (!state.token) {
+      showToast('Tour request received: ' + description + '. Create a free account next time to earn loyalty points and track this booking!', 'success');
+      resetTourForm(evt.target);
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalLabel;
+      return;
+    }
+
+    try {
+      var res = await fetch(API_BASE + '/action', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + state.token
+        },
+        body: JSON.stringify({ type: 'tour', description: description })
+      });
+
+      var data = await res.json();
+
+      if (res.ok && data.success) {
+        showToast(data.message + ' You earned +' + data.pointsEarned + ' loyalty points.', 'success');
+        if (data.user) {
+          state.user = data.user;
+          localStorage.setItem('swachfarm_user', JSON.stringify(state.user));
+        }
+      } else {
+        showToast(data.message || 'Could not reach the farm server right now, but your tour request has been noted.', 'warn');
+      }
+    } catch (err) {
+      showToast('Our live server connection isn\'t available yet (demo mode). Your tour request details were: ' + description, 'warn');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalLabel;
+      resetTourForm(evt.target);
+    }
+  };
+
+  function resetTourForm(formEl) {
+    formEl.reset();
+    document.getElementById('tourGuests').value = 2;
+    document.querySelectorAll('.slot-option').forEach(function (opt) {
+      opt.classList.remove('selected');
+    });
+    state.selectedSlot = null;
+    var minDate = new Date();
+    minDate.setDate(minDate.getDate() + 1);
+    document.getElementById('tourDate').min = minDate.toISOString().split('T')[0];
+  }
+
+  // =======================================================================
+  // Contact form
+  // =======================================================================
+  window.handleContactSubmit = function (evt) {
+    evt.preventDefault();
+    var service = document.getElementById('contactService').value;
+    showToast('Thank you! Your request for "' + service + '" has been received. Our team will contact you shortly.', 'success');
+    evt.target.reset();
+  };
+
+  // =======================================================================
+  // Auth modal
+  // =======================================================================
+  window.openAuthModal = function (tab) {
+    document.getElementById('auth-modal-overlay').classList.add('open');
+    switchAuthTab(tab || 'login');
+  };
+  window.closeAuthModal = function () {
+    document.getElementById('auth-modal-overlay').classList.remove('open');
+    document.getElementById('loginError').classList.remove('show');
+    document.getElementById('registerError').classList.remove('show');
+  };
+
+  window.switchAuthTab = function (tab) {
+    var loginTab = document.getElementById('tabLoginBtn');
+    var registerTab = document.getElementById('tabRegisterBtn');
+    var loginForm = document.getElementById('loginForm');
+    var registerForm = document.getElementById('registerForm');
+
+    if (tab === 'login') {
+      loginTab.classList.add('active');
+      registerTab.classList.remove('active');
+      loginForm.classList.add('active');
+      registerForm.classList.remove('active');
+    } else {
+      registerTab.classList.add('active');
+      loginTab.classList.remove('active');
+      registerForm.classList.add('active');
+      loginForm.classList.remove('active');
+    }
+  };
+
+  window.handleAuthNavClick = function (evt) {
+    if (evt) evt.preventDefault();
+    if (state.token) {
+      showView('dashboard');
+    } else {
+      openAuthModal('login');
+    }
+  };
+
+  function updateAuthNavButton() {
+    var btn = document.getElementById('authNavBtn');
+    if (state.token && state.user) {
+      btn.textContent = 'My Dashboard (' + state.user.name.split(' ')[0] + ')';
+    } else {
+      btn.textContent = 'Login / Register';
+    }
+  }
+
+  window.handleLogin = async function (evt) {
+    evt.preventDefault();
+    var email = document.getElementById('loginEmail').value.trim();
+    var password = document.getElementById('loginPassword').value;
+    var errorBox = document.getElementById('loginError');
+    var submitBtn = document.getElementById('loginSubmitBtn');
+
+    errorBox.classList.remove('show');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Signing In...';
+
+    try {
+      var res = await fetch(API_BASE + '/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email, password: password })
+      });
+      var data = await res.json();
+
+      if (res.ok && data.success) {
+        state.token = data.token;
+        state.user = data.user;
+        localStorage.setItem('swachfarm_token', state.token);
+        localStorage.setItem('swachfarm_user', JSON.stringify(state.user));
+        updateAuthNavButton();
+        closeAuthModal();
+        showToast(data.message, 'success');
+        evt.target.reset();
+      } else {
+        errorBox.textContent = data.message || 'Login failed. Please check your credentials.';
+        errorBox.classList.add('show');
+      }
+    } catch (err) {
+      errorBox.textContent = 'Our live server connection isn\'t available yet. Please try again once the site is deployed with a live database.';
+      errorBox.classList.add('show');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Sign In';
+    }
+  };
+
+  window.handleRegister = async function (evt) {
+    evt.preventDefault();
+    var name = document.getElementById('registerName').value.trim();
+    var email = document.getElementById('registerEmail').value.trim();
+    var password = document.getElementById('registerPassword').value;
+    var errorBox = document.getElementById('registerError');
+    var submitBtn = document.getElementById('registerSubmitBtn');
+
+    errorBox.classList.remove('show');
+
+    if (password.length < 6) {
+      errorBox.textContent = 'Password must be at least 6 characters long.';
+      errorBox.classList.add('show');
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Creating Account...';
+
+    try {
+      var res = await fetch(API_BASE + '/auth/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: name, email: email, password: password })
+      });
+      var data = await res.json();
+
+      if (res.ok && data.success) {
+        state.token = data.token;
+        state.user = data.user;
+        localStorage.setItem('swachfarm_token', state.token);
+        localStorage.setItem('swachfarm_user', JSON.stringify(state.user));
+        updateAuthNavButton();
+        closeAuthModal();
+        showToast(data.message, 'success');
+        evt.target.reset();
+      } else {
+        errorBox.textContent = data.message || 'Registration failed. Please try again.';
+        errorBox.classList.add('show');
+      }
+    } catch (err) {
+      errorBox.textContent = 'Our live server connection isn\'t available yet. Please try again once the site is deployed with a live database.';
+      errorBox.classList.add('show');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Create Account';
+    }
+  };
+
+  window.logout = function () {
+    state.token = null;
+    state.user = null;
+    localStorage.removeItem('swachfarm_token');
+    localStorage.removeItem('swachfarm_user');
+    updateAuthNavButton();
+    showToast('You have been logged out. See you again soon!', 'success');
+    showView('home');
+  };
+
+  // =======================================================================
+  // Dashboard
+  // =======================================================================
+  async function loadDashboard() {
+    var container = document.getElementById('dashboardContainer');
+
+    if (!state.token) {
+      container.innerHTML =
+        '<div class="dash-guest-notice">' +
+          '<h3>You are not signed in</h3>' +
+          '<p>Sign in or create a free account to view your loyalty points and order history.</p>' +
+          '<button class="btn btn-primary" onclick="openAuthModal(\'login\')">Login / Register</button>' +
+        '</div>';
+      return;
+    }
+
+    container.innerHTML = '<div class="dash-loading">Loading your dashboard...</div>';
+
+    try {
+      var res = await fetch(API_BASE + '/dashboard/data', {
+        method: 'GET',
+        headers: { 'Authorization': 'Bearer ' + state.token }
+      });
+      var data = await res.json();
+
+      if (res.ok && data.success) {
+        renderDashboard(data.user);
+      } else if (res.status === 401) {
+        logout();
+        showToast('Your session has expired. Please sign in again.', 'warn');
+      } else {
+        renderDashboardFallback(data.message || 'Could not load your dashboard right now.');
+      }
+    } catch (err) {
+      renderDashboardFallback('Our live server connection isn\'t available yet. Once the site is deployed with a live MongoDB database, your real dashboard data will appear here.');
+    }
+  }
+
+  function renderDashboardFallback(message) {
+    var container = document.getElementById('dashboardContainer');
+    var cachedUser = state.user || { name: 'Guest', email: '', points: 0 };
+    container.innerHTML =
+      '<div class="dashboard-wrapper">' +
+        '<div class="dash-profile-card">' +
+          '<div class="dash-avatar">' + (cachedUser.name ? cachedUser.name.charAt(0).toUpperCase() : '?') + '</div>' +
+          '<h3>' + escapeHtml(cachedUser.name) + '</h3>' +
+          '<div class="dash-email">' + escapeHtml(cachedUser.email) + '</div>' +
+          '<div class="dash-points-label"><span>Loyalty Points</span><span>' + (cachedUser.points || 0) + ' pts</span></div>' +
+          '<div class="dash-points-bar"><div class="dash-points-fill" style="width:' + Math.min(100, (cachedUser.points || 0)) + '%"></div></div>' +
+          '<div class="dash-points-hint">Live sync unavailable right now &mdash; showing your last known data.</div>' +
+          '<button class="btn btn-danger-outline dash-logout-btn" onclick="logout()">Log Out</button>' +
+        '</div>' +
+        '<div class="dash-history-card">' +
+          '<h3>Activity History</h3>' +
+          '<p class="sub">' + escapeHtml(message) + '</p>' +
+          '<div class="history-empty">No live activity data to show right now.</div>' +
+        '</div>' +
+      '</div>';
+  }
+
+  function renderDashboard(user) {
+    var container = document.getElementById('dashboardContainer');
+    var points = user.points || 0;
+    var pct = Math.max(4, Math.min(100, points % 100 === 0 && points > 0 ? 100 : points % 100));
+
+    var historyHtml = '';
+    if (user.activityLog && user.activityLog.length > 0) {
+      var reversed = user.activityLog.slice().reverse();
+      historyHtml = reversed.map(function (entry) {
+        return '<div class="history-item">' + escapeHtml(entry) + '</div>';
+      }).join('');
+    } else {
+      historyHtml = '<div class="history-empty">No activity yet. Place a shop order or book a farm tour to get started!</div>';
+    }
+
+    container.innerHTML =
+      '<div class="dashboard-wrapper">' +
+        '<div class="dash-profile-card">' +
+          '<div class="dash-avatar">' + escapeHtml(user.name.charAt(0).toUpperCase()) + '</div>' +
+          '<h3>' + escapeHtml(user.name) + '</h3>' +
+          '<div class="dash-email">' + escapeHtml(user.email) + '</div>' +
+          '<div class="dash-points-label"><span>Loyalty Points</span><span>' + points + ' pts</span></div>' +
+          '<div class="dash-points-bar"><div class="dash-points-fill" style="width:' + pct + '%"></div></div>' +
+          '<div class="dash-points-hint">Earn +15 points per shop order and +10 points per farm tour booked.</div>' +
+          '<button class="btn btn-danger-outline dash-logout-btn" onclick="logout()">Log Out</button>' +
+        '</div>' +
+        '<div class="dash-history-card">' +
+          '<h3>Activity History</h3>' +
+          '<p class="sub">A chronological record of your Swach Farm orders and bookings.</p>' +
+          '<div class="history-list">' + historyHtml + '</div>' +
+        '</div>' +
+      '</div>';
+  }
+
+  function escapeHtml(str) {
+    if (str === undefined || str === null) return '';
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
+  }
+
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+{
+  "name": "swach-farm-app",
+  "version": "1.0.0",
+  "description": "Swach Farm - Local Pickup Farm Shop and Agritourism Tour Booking System. Fresh, pure milk delivered from our farm in Revalle village, Karimnagar district, Telangana to every doorstep - no preservatives, no chemicals, just health.",
+  "private": true,
+  "author": "Swach Farm",
+  "license": "UNLICENSED",
+  "keywords": [
+    "dairy",
+    "farm",
+    "milk",
+    "agritourism",
+    "netlify",
+    "serverless",
+    "express"
+  ],
+  "scripts": {
+    "build": "echo 'No build step required'",
+    "start": "netlify dev"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "mongoose": "^8.9.5",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2",
+    "cors": "^2.8.5",
+    "serverless-http": "^3.2.0"
+  }
+}
