@@ -117,6 +117,31 @@ const userSchema = new mongoose.Schema(
 // invocations, which would otherwise throw "OverwriteModelError".
 const User = mongoose.models.User || mongoose.model('User', userSchema);
 
+const inquirySchema = new mongoose.Schema(
+  {
+    type: {
+      type: String,
+      required: true,
+      enum: ['contact', 'shop', 'tour'],
+    },
+    name: { type: String, required: true, trim: true },
+    phone: { type: String, required: true, trim: true },
+    email: { type: String, trim: true, lowercase: true },
+    address: { type: String, trim: true },
+    service: { type: String, trim: true },
+    message: { type: String, trim: true },
+    description: { type: String, trim: true },
+    status: {
+      type: String,
+      enum: ['new', 'contacted', 'resolved'],
+      default: 'new',
+    },
+  },
+  { timestamps: true }
+);
+
+const Inquiry = mongoose.models.Inquiry || mongoose.model('Inquiry', inquirySchema);
+
 // -------------------------------------------------------------------------
 // Express app setup
 // -------------------------------------------------------------------------
@@ -201,6 +226,53 @@ app.get('/api/health', (req, res) => {
     message: 'Swach Farm API is up and running.',
     timestamp: new Date().toISOString(),
   });
+});
+
+// -------------------------------------------------------------------------
+// Inquiries (public) - contact form submissions, and guest shop orders /
+// tour bookings placed by visitors without an account.
+// -------------------------------------------------------------------------
+
+app.post('/api/inquiries', async (req, res) => {
+  try {
+    const { type, name, phone, email, address, service, message, description } = req.body || {};
+
+    if (!['contact', 'shop', 'tour'].includes(type)) {
+      return res.status(400).json({
+        success: false,
+        message: 'Inquiry type must be "contact", "shop" or "tour".',
+      });
+    }
+    if (!name || !name.trim()) {
+      return res.status(400).json({ success: false, message: 'Name is required.' });
+    }
+    if (!phone || !phone.trim()) {
+      return res.status(400).json({ success: false, message: 'Phone number is required.' });
+    }
+
+    await Inquiry.create({
+      type,
+      name: name.trim(),
+      phone: phone.trim(),
+      email: email ? email.trim().toLowerCase() : undefined,
+      address: address ? address.trim() : undefined,
+      service: service ? service.trim() : undefined,
+      message: message ? message.trim() : undefined,
+      description: description ? description.trim() : undefined,
+    });
+
+    return res.status(201).json({
+      success: true,
+      message: 'Thank you! Your request has been received. Our team will contact you shortly.',
+    });
+  } catch (err) {
+    // eslint-disable-next-line no-console
+    console.error('[swach-farm-api] Inquiry error:', err);
+    return res.status(500).json({
+      success: false,
+      message: 'Something went wrong while submitting your request. Please try again.',
+    });
+  }
 });
 
 // -------------------------------------------------------------------------
