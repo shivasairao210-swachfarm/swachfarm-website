@@ -162,7 +162,10 @@
     color: var(--text-dark);
     background: transparent;
     transition: background 0.18s ease, color 0.18s ease;
+    white-space: nowrap;
   }
+  .nav-links { flex-wrap: nowrap; }
+  .nav-links li { flex-shrink: 0; }
   .nav-links a:hover, .nav-links button.nav-link-btn:hover {
     background: var(--forest-pale);
     color: var(--forest-dark);
