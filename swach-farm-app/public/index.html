@@ -1045,6 +1045,32 @@
   .order-item-date { color: var(--text-muted); font-size: 0.78rem; white-space: nowrap; }
   .order-item-desc { margin-bottom: 4px; }
   .order-item-points { color: var(--gold-dark); font-size: 0.78rem; font-weight: 600; }
+  .order-products { display: flex; flex-direction: column; gap: 6px; margin-bottom: 8px; }
+  .order-product-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--white);
+    border-radius: var(--radius-sm);
+    padding: 8px 10px;
+  }
+  .order-product-icon { font-size: 1.15rem; line-height: 1; }
+  .order-product-name { flex: 1; font-weight: 500; }
+  .order-product-qty { color: var(--text-muted); font-size: 0.8rem; }
+  .order-product-price { font-weight: 600; color: var(--forest-dark); white-space: nowrap; }
+  .order-item-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+    flex-wrap: wrap;
+  }
+  .order-item-total { font-weight: 700; color: var(--forest-dark); }
+  .order-tour-details { display: flex; flex-wrap: wrap; gap: 10px; font-size: 0.82rem; color: var(--text-dark); margin-bottom: 6px; }
+  .order-tour-details span { background: var(--white); border-radius: var(--radius-sm); padding: 5px 10px; }
   .dash-loading { text-align: center; padding: 60px 10px; color: var(--text-muted); }
   .dash-guest-notice {
     background: #fff6e6;
@@ -2037,11 +2063,23 @@
       return state.cart[id] + 'x ' + product.name;
     }).join(', ');
 
+    var orderItems = ids.map(function (id) {
+      var product = PRODUCTS[id];
+      return {
+        name: product.name,
+        icon: product.icon,
+        qty: state.cart[id],
+        price: product.price,
+        unit: product.unit
+      };
+    });
+
     var fulfillmentLabel = state.fulfillment === 'pickup'
       ? 'Farm Pickup (Revelly Village)'
       : 'Home Delivery (Karimnagar)';
 
-    var fullDescription = itemsDescription + ' | Fulfillment: ' + fulfillmentLabel + ' | Total: ' + CURRENCY + getCartTotal();
+    var orderTotal = getCartTotal();
+    var fullDescription = itemsDescription + ' | Fulfillment: ' + fulfillmentLabel + ' | Total: ' + CURRENCY + orderTotal;
 
     var guestBtn = document.querySelector('#cart-drawer .cart-footer .btn-primary');
 
@@ -2106,7 +2144,13 @@
           'Content-Type': 'application/json',
           'Authorization': 'Bearer ' + state.token
         },
-        body: JSON.stringify({ type: 'shop', description: fullDescription })
+        body: JSON.stringify({
+          type: 'shop',
+          description: fullDescription,
+          items: orderItems,
+          fulfillment: fulfillmentLabel,
+          total: orderTotal
+        })
       });
 
       var data = await res.json();
@@ -2202,7 +2246,13 @@
           'Content-Type': 'application/json',
           'Authorization': 'Bearer ' + state.token
         },
-        body: JSON.stringify({ type: 'tour', description: description })
+        body: JSON.stringify({
+          type: 'tour',
+          description: description,
+          tourDate: date,
+          tourGuests: guests,
+          tourSlot: state.selectedSlot
+        })
       });
 
       var data = await res.json();
@@ -2521,6 +2571,39 @@
     return d.toLocaleString('en-IN', { dateStyle: 'medium', timeStyle: 'short' });
   }
 
+  function renderOrderBody(order) {
+    if (order.type === 'shop' && order.items && order.items.length > 0) {
+      var rows = order.items.map(function (item) {
+        return '' +
+          '<div class="order-product-row">' +
+            '<span class="order-product-icon">' + escapeHtml(item.icon || '🛒') + '</span>' +
+            '<span class="order-product-name">' + escapeHtml(item.name) + '</span>' +
+            '<span class="order-product-qty">x' + (item.qty || 1) + (item.unit ? ' (' + escapeHtml(item.unit) + ')' : '') + '</span>' +
+            (item.price ? '<span class="order-product-price">' + CURRENCY + (item.price * (item.qty || 1)) + '</span>' : '') +
+          '</div>';
+      }).join('');
+
+      return '' +
+        '<div class="order-products">' + rows + '</div>' +
+        '<div class="order-item-meta">' +
+          (order.fulfillment ? '<span>🚚 ' + escapeHtml(order.fulfillment) + '</span>' : '<span></span>') +
+          (typeof order.total === 'number' ? '<span class="order-item-total">Total: ' + CURRENCY + order.total + '</span>' : '') +
+        '</div>';
+    }
+
+    if (order.type === 'tour' && order.tourDate) {
+      return '' +
+        '<div class="order-tour-details">' +
+          '<span>📅 ' + escapeHtml(order.tourDate) + '</span>' +
+          (order.tourGuests ? '<span>👥 ' + order.tourGuests + ' guest(s)</span>' : '') +
+          (order.tourSlot ? '<span>⏰ ' + escapeHtml(order.tourSlot) + '</span>' : '') +
+        '</div>';
+    }
+
+    var typeLabel = ORDER_TYPE_LABELS[order.type] || order.type;
+    return '<div class="order-item-desc">' + escapeHtml(order.description || typeLabel) + '</div>';
+  }
+
   function renderDashboard(user, orders) {
     var container = document.getElementById('dashboardContainer');
     var points = user.points || 0;
@@ -2546,7 +2629,7 @@
               '<span class="order-type-badge ' + escapeHtml(order.type) + '">' + escapeHtml(typeLabel) + '</span>' +
               '<span class="order-item-date">' + escapeHtml(formatOrderDate(order.createdAt)) + '</span>' +
             '</div>' +
-            '<div class="order-item-desc">' + escapeHtml(order.description || typeLabel) + '</div>' +
+            renderOrderBody(order) +
             '<div class="order-item-points">+' + (order.pointsEarned || 0) + ' loyalty points</div>' +
           '</div>';
       }).join('');

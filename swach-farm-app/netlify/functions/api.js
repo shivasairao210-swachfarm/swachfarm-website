@@ -169,6 +169,22 @@ const orderSchema = new mongoose.Schema(
       enum: ['placed', 'confirmed', 'completed', 'cancelled'],
       default: 'placed',
     },
+    // Shop order details (type: 'shop')
+    items: [
+      {
+        name: String,
+        icon: String,
+        qty: Number,
+        price: Number,
+        unit: String,
+      },
+    ],
+    fulfillment: { type: String, trim: true },
+    total: { type: Number },
+    // Farm tour details (type: 'tour')
+    tourDate: { type: String, trim: true },
+    tourGuests: { type: Number },
+    tourSlot: { type: String, trim: true },
   },
   { timestamps: true }
 );
@@ -569,6 +585,12 @@ app.get('/api/orders', verifyToken, async (req, res) => {
         pointsEarned: order.pointsEarned,
         status: order.status,
         createdAt: order.createdAt,
+        items: order.items,
+        fulfillment: order.fulfillment,
+        total: order.total,
+        tourDate: order.tourDate,
+        tourGuests: order.tourGuests,
+        tourSlot: order.tourSlot,
       })),
     });
   } catch (err) {
@@ -622,7 +644,7 @@ app.put('/api/cart', verifyToken, async (req, res) => {
 
 app.post('/api/action', verifyToken, async (req, res) => {
   try {
-    const { type, description } = req.body || {};
+    const { type, description, items, fulfillment, total, tourDate, tourGuests, tourSlot } = req.body || {};
 
     if (!type || (type !== 'shop' && type !== 'tour')) {
       return res.status(400).json({
@@ -664,11 +686,30 @@ app.post('/api/action', verifyToken, async (req, res) => {
 
     await user.save();
 
+    const sanitizedItems = Array.isArray(items)
+      ? items
+          .filter((item) => item && typeof item.name === 'string')
+          .slice(0, 50)
+          .map((item) => ({
+            name: item.name,
+            icon: typeof item.icon === 'string' ? item.icon : undefined,
+            qty: Number.isFinite(item.qty) ? item.qty : undefined,
+            price: Number.isFinite(item.price) ? item.price : undefined,
+            unit: typeof item.unit === 'string' ? item.unit : undefined,
+          }))
+      : undefined;
+
     await Order.create({
       user: user._id,
       type,
       description,
       pointsEarned,
+      items: sanitizedItems,
+      fulfillment: typeof fulfillment === 'string' ? fulfillment : undefined,
+      total: Number.isFinite(total) ? total : undefined,
+      tourDate: typeof tourDate === 'string' ? tourDate : undefined,
+      tourGuests: Number.isFinite(tourGuests) ? tourGuests : undefined,
+      tourSlot: typeof tourSlot === 'string' ? tourSlot : undefined,
     });
 
     await sendInquiryNotificationEmail({
