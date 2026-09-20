@@ -129,6 +129,7 @@
     font-weight: 700;
     font-size: 1.3rem;
     color: var(--forest-dark);
+    white-space: nowrap;
   }
   .nav-brand img {
     width: 46px;
@@ -164,8 +165,11 @@
     transition: background 0.18s ease, color 0.18s ease;
     white-space: nowrap;
   }
-  .nav-links { flex-wrap: nowrap; }
+  .nav-links { flex-wrap: nowrap; flex-shrink: 0; }
   .nav-links li { flex-shrink: 0; }
+  @media (min-width: 1221px) {
+    .nav-brand, .nav-actions { flex-shrink: 0; }
+  }
   .nav-links a:hover, .nav-links button.nav-link-btn:hover {
     background: var(--forest-pale);
     color: var(--forest-dark);
@@ -1026,7 +1030,7 @@
     .about-grid, .contact-grid, .tours-wrapper, .dashboard-wrapper, .delivery-strip { grid-template-columns: 1fr; }
     .footer-grid { grid-template-columns: 1fr 1fr; }
   }
-  @media (max-width: 1100px) {
+  @media (max-width: 1220px) {
     .nav-links { display: none; }
     .nav-toggle { display: flex; }
     .nav-links.mobile-open {
