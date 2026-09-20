@@ -2373,9 +2373,12 @@
   window.logout = function () {
     state.token = null;
     state.user = null;
+    state.cart = {};
     localStorage.removeItem('swachfarm_token');
     localStorage.removeItem('swachfarm_user');
+    localStorage.removeItem('swachfarm_cart');
     updateAuthNavButton();
+    updateCartUI();
     showToast('You have been logged out. See you again soon!', 'success');
     showView('home');
   };
